@@ -2,8 +2,9 @@
 <head>
 <script>
 var address1=new URL(window.location.href);
+if(address1.searchParams.has('v')==true){
 var v=address1.searchParams.get('v');
-window.location.href='http://regina.zzz.com.ua/'+v+'.html';
+window.location.href='http://regina.zzz.com.ua/'+v+'.html';}else{window.location.href='http://regina.zzz.com.ua/';}
 </script>
 </head>
 <body>
