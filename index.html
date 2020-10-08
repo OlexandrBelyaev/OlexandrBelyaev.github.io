@@ -1,12 +1,1085 @@
+<!DOCTYPE html>
 <html>
 <head>
-<script>
-var address1=new URL(window.location.href);
-if(address1.searchParams.has('v')==true){
-var v=address1.searchParams.get('v');
-window.location.href='http://regina.zzz.com.ua/'+v+'.html';}else{window.location.href='http://regina.zzz.com.ua/';}
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://animejs.com/lib/anime.min.js"></script>
+<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #DADCDE;
+  margin-bottom:2%;
+  margin-left:0;margin-top:0;margin-bottom:1%;
+  height:87vh;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+  flex-basis:100%;
+  overflow:auto;
+}
+.bb84write{
+	margin:3%;
+	display: flex;
+    flex-wrap: wrap;
+}
+.bb84write > div{
+
+  width:350px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:3%;
+  font-size:0.65em;
+  line-height:1.2em;
+}
+.text{
+font-size:0.7em;
+line-height: 1.2em;
+text-align:left;
+padding-left:7%;
+padding-right:7%;
+margin:0;
+}
+body{margin:0;font-family:Raleway;}
+h2{margin-bottom:0;}
+textarea{max-width:5%;text-align:center;min-width:5%;max-height:35px;min-height:30px;font-size:0.8em;flex-basis:4%;resize: none;}
+button{width:auto;border:1px solid #DADCDE;font-family:Raleway;font-size:20px;padding:5px;}
+body{background-color: #DADCDE;}
+.table3{display:flex;width:100%;text-align:center;line-height:1.5em;}
+.table3 > div{border:1px solid black;font-size:2vw;height:5vw;justify-content: center;}
+
+</style>
 </head>
 <body>
+<div id="main" class="flex-container">
+
+  <div id="1"><div><h2>Вступ</h2></div>
+	<div><p class="text">Квантовий розподіл ключа - метод передачі ключа, який
+використовує квантові явища для гарантії безпечної зв'язку. Цей метод
+дозволяє двом сторонам, з'єднаним з відкритого каналу зв'язку, створити
+загальний випадковий ключ, який відомий тільки їм, і використовувати
+його для шифрування і розшифрування повідомлень. Важливою і
+унікальною властивістю квантового розподілу ключа є можливість
+виявити присутність третьої сторони, яка намагається отримати
+інформацію про ключ. Тут використовується фундаментальний аспект
+квантової механіки: процес виміру квантової системи порушує її. Третя
+сторона, яка намагається отримати ключ, повинна виміряти надіслані
+через з'єднання квантові стани, що веде до їх зміни і появи аномалії. За
+допомогою квантової суперпозиції, квантової заплутаності і передачі
+даних в квантових станах можна здійснити канал зв'язку, який виявляє
+аномалії. Якщо кількість аномалій нижче певного порогу, то буде
+створено, ключ що гарантує безпеку (третя сторона не має інформації про
+це), інакше секретний ключ не буде створено і зв'язок припиняється.
+</p></div>
+	
+  </div>
+  <div id="2" style="display: none;">
+	<div><h2>Алгоритм BB84</h2></div>
+<script>
+
+window.addEventListener('load', (event) => {
+anime({
+targets: ['.square1'],
+keyframes: [
+    {translateX:'80%'},
+	{translateX:'95%',translateY:'-85%',duration:625}
+  ],
+  duration: 5625,
+  easing: 'linear',
+  loop: true
+});
+anime({
+targets: ['.square2'],
+keyframes: [
+    {translateX:'80%'},
+	{translateX:'95%',translateY:'85%',duration:625}
+  ],
+  delay:500,
+  duration: 5625,
+  easing: 'linear',
+  loop: true
+});
+
+});
+function analize(a,b){
+switch (a){
+case 0:{if (b=='X'||b=='x'){return '/';}else{return '|';}}
+case 1:{if (b=='+'){return '\\';}else{return '-';}}
+}
+};
+function analize1(a,b){
+switch (a){
+case '\\':{if (b=='X'||b=='x'){return true;}else{return false;}}
+case '/':{if (b=='X'||b=='x'){return true;}else{return false;}}
+case '-':{if (b=='+'){return true;}else{return false;}}
+case '|':{if (b=='+'){return true;}else{return false;}}
+}
+};
+function analize2(a){
+switch (a){
+case 0:if (Math.round(Math.random())){return '|';}else{return '/';}
+case 1:if (Math.round(Math.random())){return '-';}else{return '\\';}
+}
+};
+
+</script>
+    <svg style="width:100%;height:25%;">
+<line x1="5%" y1="50%" x2="80%" y2="50%" style="stroke-dasharray: 5 10; stroke: black; stroke-width: 1px;" />	
+<line x1="85%" y1="50%" x2="92.5%" y2="10%" style="stroke-dasharray: 5 10; stroke: black; stroke-width: 1px;" />
+<line x1="85%" y1="50%" x2="92.5%" y2="90%" style="stroke-dasharray: 5 10; stroke: black; stroke-width: 1px;" />
+<ellipse  rx="0.12em" ry="0.12em" cx="5%" cy="50%" style="fill:yellow;" class="square1"/>
+<ellipse  rx="0.12em" ry="0.12em" cx="5%" cy="50%" style="fill:yellow;" class="square2"/>
+<line x1="5%" y1="50%" x2="80%" y2="50%" style="stroke-dasharray: 5 10; stroke: black; stroke-width: 1px;" />		
+<rect width="3%" height="7%" x="5%" y="46.5%" style="fill:#DFD41A;" />
+<ellipse  rx="1%" ry="40%" cx="15%" cy="50%" style="fill:lightblue;fill-opacity:0.8;" />
+<rect width="0.5%" height="40%" x="25%" y="30%" style="fill:#000;" />
+<rect width="0.5%" height="7%" x="25%" y="46.5%" style="fill:#f1f1f1;" />
+<rect width="0.5%" height="50%" x="30%" y="25%" style="fill:#000;" />
+<rect width="5%" height="30%" x="35%" y="35%" ry="4%" style="fill:blue;fill-opacity:0.7;" />
+<rect width="5%" height="30%" x="45%" y="35%" ry="4%" style="fill:blue;fill-opacity:0.7;" />
+
+<rect width="5%" height="30%" x="65%" y="35%" ry="4%" style="fill:blue;fill-opacity:0.7;" />
+<rect width="5%" height="30%" x="80%" y="35%" style="fill:yellow;fill-opacity:0.7;" stroke="black" stroke-width="1" />
+
+<rect width="2.5%" height="20%" x="92.5%" y="80%" style="fill:lightgrey;stroke:black;stroke-width:1"/>
+<ellipse rx="0.18em" ry="10%" cx="92.5%" cy="90%" style="fill:lightblue;stroke:black;"/>
+
+<rect width="2.5%" height="20%" x="92.5%" y="0%" style="fill:lightgrey;stroke:black;stroke-width:1"/>
+<ellipse rx="0.18em" ry="10%" cx="92.5%" cy="10%" style="fill:lightblue;stroke:black;"/>
+	</svg>
+<p align="center" style="font-size:0.5em;line-height:0.75em;">Передача даних у алгоритмі BB84</p>
+
+ 	<div class="bb84write">
+		<div><strong>Крок 1. </strong>Абонент А випадковим чином обирає базис (вертикальний або діагональний).</div>
+		<div><strong>Крок 2. </strong>У відповідності до базису послідовність бітів кодується у послідовність поляризованих сигналів.</div>
+		<div><strong>Крок 3. </strong>Послідовність бітів відправляється каналом зв'язку абоненту В</div>
+	</div>
+	<div id="b1" style="margin-top:3%;" hidden>
+	<div>
+	<textarea id="ex00"></textarea>
+	<textarea id="ex01"></textarea>
+	<textarea id="ex02"></textarea>
+	<textarea id="ex03"></textarea>
+	<textarea id="ex04"></textarea>
+	<textarea id="ex05"></textarea>
+	<textarea id="ex06"></textarea>
+	<textarea id="ex07"></textarea>
+	<div style="font-size:0.8em;line-height:0.9em;">Вхідна послідовність бітів</div>
+	</div>
+	<div>
+	<textarea id="ex10"></textarea>
+	<textarea id="ex11"></textarea>
+	<textarea id="ex12"></textarea>
+	<textarea id="ex13"></textarea>
+	<textarea id="ex14"></textarea>
+	<textarea id="ex15"></textarea>
+	<textarea id="ex16"></textarea>
+	<textarea id="ex17"></textarea>
+	<div style="font-size:0.8em;line-height:0.9em;">Закодована послідовність бітів</div>
+	</div>
+	<div class="bb84write">
+		<div><strong>Крок 4. </strong>Абонент B випадковим чином обирає послідовність аналізаторів (вертикальних або діагональних).</div>
+		<div><strong>Крок 5. </strong>Отримана послідовність фотонів від Абонента А проходить аналізатори Абонента В.</div>
+		<div><strong>Крок 6. </strong>Якщо квантовийй стан фотону (поляризація) відповідає базису аналізатора Абонента В, значення фотона переводиться в 1 або 0.</div>
+	</div>
+	</div>
+	<div id="b2" style="margin-top:3%;" hidden>
+	<div>
+	<textarea id="ex20"></textarea>
+	<textarea id="ex21"></textarea>
+	<textarea id="ex22"></textarea>
+	<textarea id="ex23"></textarea>
+	<textarea id="ex24"></textarea>
+	<textarea id="ex25"></textarea>
+	<textarea id="ex26"></textarea>
+	<textarea id="ex27"></textarea>
+	<div style="font-size:0.8em;line-height:0.9em;">Послідовність аналізаторів в Абонента В</div>
+	</div>
+	<div>
+	<textarea id="ex30"></textarea>
+	<textarea id="ex31"></textarea>
+	<textarea id="ex32"></textarea>
+	<textarea id="ex33"></textarea>
+	<textarea id="ex34"></textarea>
+	<textarea id="ex35"></textarea>
+	<textarea id="ex36"></textarea>
+	<textarea id="ex37"></textarea>
+	<div style="font-size:0.8em;line-height:0.9em;">Результуюча послідовність</div>
+	</div>
+	</div>
+	<div id="b3" style="margin-top:3%;" hidden>
+	<div>
+	<div id="result" style="font-size:0.8em;line-height:0.9em;margin:5%;">Отримана послідовність є спільним ключем для обох абонетів, який передається шляхом передачі Абонентом В відкритим каналом зв'язку, які саме аналізатори спрацювали. Результати ж залишаються в секреті
+	</div>
+	</div>
+	</div>
+	<button id="but" onclick="next1(i);" alt="boom">Далі</button>
+<script>
+var j=1;
+var i=0;
+function next1(){
+switch(j){
+case 1:$(document).ready(function(){$('#b1').show(1000);
+		var basis=Math.round(Math.random());
+		if (basis==0){basis="+"}else{basis="x"}
+		for (i=0;i<8;i++){
+		var rand=Math.round(Math.random());
+		$('#ex0'+i).append(rand);
+		$('#ex1'+i).append(analize2(rand));
+		}
+		});j++;break;
+case 2:$(document).ready(function(){$('#b2').show(1000);
+		for (i=0;i<8;i++){
+		var rand=Math.round(Math.random());
+		if (rand){rand='+'}else{rand="x"}
+		$('#ex2'+i).append(rand);
+		if(analize1($('#ex1'+i).val(),$('#ex2'+i).val())){if($('#ex1'+i).val()=='/'||$('#ex1'+i).val()=='|'){$('#ex3'+i).append(0);}else{$('#ex3'+i).append(1);}}else{$('#ex3'+i).prop('disabled',true);}
+		}
+		});j++;break;
+case 3:$(document).ready(function(){$('#b3').show(1000);
+		$('#but').hide(1500)
+		});j++;
+		break;
+}
+}
+</script>	
+  
+  </div>
+  <div id="3" style="display: none;">
+	<div>
+		<h2>Практичне завдання №1</h2>
+<script>
+window.addEventListener('load', (event) => {
+$(document).ready(function(){$("textarea").attr("maxlength",1);});
+$(document).ready(function(){
+  for(z=0;z<8;z++){
+  	var rand=Math.round(Math.random());
+	$('#pw0'+z).append(rand);
+	$('#pw0'+z).prop('readonly',true);
+	var rand1=Math.round(Math.random());
+	if (rand1==0){$('#pw'+z).append('+');}else{$('#pw'+z).append('x');}
+	$('#pw'+z).prop('readonly',true);
+	}
+});
+});
+var j1=1;
+var z=0;
+var res=0;
+function next2(){
+switch(j1){
+case 1:
+$(document).ready(function(){
+
+	for(z=0;z<8;z++){
+		var a = $('#pw0'+z).val();
+		var b = $('#pw'+z).val();
+		var c = $('#pw0'+(8+z)).val();
+		switch(b){
+			case '+':if((a==1&&c=='-')||(a==0&&c=='|')){res++;$('#pw0'+(8+z)).css('background-color','#70FF55');}else{$('#pw0'+(8+z)).css('background-color','#FF3433');$('#pw0'+(8+z)).prop('disabled',true);$('#pw0'+(24+z)).prop('disabled',true);$('#pw0'+(24+z)).val('');}break;
+			case 'x':if((a==1&&c=='\\')||(a==0&&c=='/')){res++;$('#pw0'+(8+z)).css('background-color','#70FF55');}else{$('#pw0'+(8+z)).css('background-color','#FF3434');$('#pw0'+(8+z)).prop('disabled',true);$('#pw0'+(24+z)).prop('disabled',true);$('#pw0'+(24+z)).val('');}break;
+		}
+		
+		if (Math.round(Math.random())){var rand2='+';}else{var rand2='x';};
+		$('#pw0'+(16+z)).append(rand2);
+		$('#pw0'+(16+z)).prop('disabled',true);
+	}
+	$('#n3').show(1000);
+});j1++;break;
+case 2:$(document).ready(function(){
+			for(z=0;z<8;z++){
+			let a1=$('#pw0'+(8+z)).val();
+			let b1=$('#pw0'+(16+z)).val();
+			let c1=$('#pw0'+(24+z)).val();
+			if((analize1(a1,b1)==true&&(c1=='T'||c1=='t'))||(analize1(a1,b1)==false&&(c1=='F'||c1=='f'))){$('#pw0'+(24+z)).css('background-color','#70FF55');$('#pw0'+(24+z)).prop('readonly',true);res++;}else{$('#pw0'+(24+z)).css('background-color','#FF3434');$('#pw0'+(24+z)).prop('disabled',true);}
+			}
+			$('#pwResult').show(1000);
+			j1++;
+		});break;
+case 3:$(document).ready(function(){
+			let d1 = $('#pwFinal').val();
+			let r1="";
+			for(z=0;z<8;z++){
+			if($('#pw0'+(24+z)).val()=='t'||$('#pw0'+(24+z)).val()=='T'){r1+=$('#pw0'+z).val();}
+			}
+			if(r1==$('#pwFinal').val()){res+=8;document.cookie="first-task="+res;}
+			$('#but1').hide(1000);
+			$('#pw').show(1000);});break;
+}
+}
+</script>	
+	<div style="display:flex;">
+	<div style="flex-basis:50%;">
+	<div>
+	<textarea id="pw00"></textarea>
+	<textarea id="pw01"></textarea>
+	<textarea id="pw02"></textarea>
+	<textarea id="pw03"></textarea>
+	<textarea id="pw04"></textarea>
+	<textarea id="pw05"></textarea>
+	<textarea id="pw06"></textarea>
+	<textarea id="pw07"></textarea>
+	</div>
+	<div>
+	<textarea id="pw0"></textarea>
+	<textarea id="pw1"></textarea>
+	<textarea id="pw2"></textarea>
+	<textarea id="pw3"></textarea>
+	<textarea id="pw4"></textarea>
+	<textarea id="pw5"></textarea>
+	<textarea id="pw6"></textarea>
+	<textarea id="pw7"></textarea>
+	</div>
+	</div>
+	<div style="flex-basis:50%;font-size:0.75em;line-height:1.5em;padding-right:10%;"><p>Закодуйте біти у відповідності до обраного програмою базисом:<br/><b>х -> { 0 : "/" , 1 : "\" },<br/>+ -> { 0: "|" , 1 : "-" }</b></p></div>
+	</div>
+	<div>
+	<textarea id="pw08"></textarea>
+	<textarea id="pw09"></textarea>
+	<textarea id="pw010"></textarea>
+	<textarea id="pw011"></textarea>
+	<textarea id="pw012"></textarea>
+	<textarea id="pw013"></textarea>
+	<textarea id="pw014"></textarea>
+	<textarea id="pw015"></textarea>
+	</div>
+	
+	<div id="n3" hidden>
+	<div style="display:flex;">
+	<div style="flex-basis:50%;">
+	<div>
+	<textarea id="pw016"></textarea>
+	<textarea id="pw017"></textarea>
+	<textarea id="pw018"></textarea>
+	<textarea id="pw019"></textarea>
+	<textarea id="pw020"></textarea>
+	<textarea id="pw021"></textarea>
+	<textarea id="pw022"></textarea>
+	<textarea id="pw023"></textarea>
+	</div>
+
+	</div>
+	<div style="flex-basis:50%;font-size:0.55em;line-height:1.5em;padding-right:10%;"><p>У відповідності до поляризації сигналів та випадково згенерованої послідовності аналізаторів визначте чи пройдуть сигнали крізь аналізатори. Введіть в поля значення T(True) або F(False)</p></div>
+	</div>
+	<div>
+	<textarea id="pw024"></textarea>
+	<textarea id="pw025"></textarea>
+	<textarea id="pw026"></textarea>
+	<textarea id="pw027"></textarea>
+	<textarea id="pw028"></textarea>
+	<textarea id="pw029"></textarea>
+	<textarea id="pw030"></textarea>
+	<textarea id="pw031"></textarea>
+	</div>
+	</div>
+	<div id="pwResult" hidden>
+	<input id="pwFinal" style="height:1.2em;font-size:1em;text-align:center;font-family:Raleway;" maxlength="8" required autofocus />
+	<p style="margin-top:0;font-size:0.75em;line-height:1.5em;padding-right:10%;padding-left:10%;">Розкодуйте сигнали (у відповідності до наявних базисів), що пройшли аналізатори.<br/>Введіть спільний секретний ключ, що у вас вийшов</p>
+	</div>
+	<button id="but1" onclick="next2();">Далі</button>
+	<div id="pw" hidden>Практичне завдання №1 завершене <b style="color:green;">&#10003;</b></div>
+	</div>
+  </div>
+  <div id="4" style="display: none;">
+  <div>
+	<h2>Алгоритм B92</h2>
+	<div class="text">
+	Алгоритм B92 - протокол квантового розподілу секретного ключа, що передбачає використання фазового кодування, себто використання ортогональних та неортогональних квантових станів (поляризацій фотонів). 
+	Протокол був розроблений і запропонований одним з авторів протоколу BB84 - Чарльзом Беннетом у 1992-ці році (звідки, власне, й назва "B" - Беннет, "92" - рік публікації спільної зі Стівеном Вайзнером статті, де були викладена концепція протоколу).
+	</div>
+	<div style="display:flex;margin-left:7%;margin-right:7%;font-size:1.2em;margin-top:2%;">
+	<div style="flex-basis:25%;border:1px solid black;">&#8634;</div>
+	<div style="flex-basis:25%;border:1px solid black;">&#8635;</div>
+	<div style="flex-basis:25%;border:1px solid black;">&#11020;</div>
+	<div style="flex-basis:25%;border:1px solid black;">&#11021;</div>	
+	</div>
+	<div style="display:flex;margin-left:7%;margin-right:7%;font-size:1.2em;">
+	<div style="flex-basis:25%;border:1px solid black;">0</div>
+	<div style="flex-basis:25%;border:1px solid black;">1</div>
+	<div style="flex-basis:25%;border:1px solid black;">1</div>
+	<div style="flex-basis:25%;border:1px solid black;">0</div>	
+	</div>
+	<div class="text">
+	<p align="center">Важливими особливостями протоколу B92 є як неортогональні базиси, так і видалення певного біта результуючої послідовності</p>
+	</div>
+	<div style="display:flex;margin-left:7%;margin-right:7%;margin-bottom:0%;margin-top:0%;line-height:1.2em;">
+	<div style="flex-basis:50%;">Абонент А</div><div style="flex-basis:50%;">Абонент В</div>
+	</div>
+	<div style="margin-left:7%;margin-right:7%;margin-top:3%;">
+		<div style="display:flex;width:100%height:40vh;" >
+			<div style="display:inline;flex-basis:50%;border:1px solid black;">
+				<div class="table3">
+					<div style="flex-basis:12.5%;">0</div>
+					<div style="flex-basis:12.5%;">0</div>
+					<div style="flex-basis:12.5%;">1</div>
+					<div style="flex-basis:12.5%;">0</div>
+					<div style="flex-basis:12.5%;">1</div>
+					<div style="flex-basis:12.5%;">1</div>
+					<div style="flex-basis:12.5%;">1</div>
+					<div style="flex-basis:12.5%;">0</div>
+				</div>
+				<div class="table3">
+					<div style="flex-basis:12.5%;">+</div>
+					<div style="flex-basis:12.5%;">&#9675;</div>
+					<div style="flex-basis:12.5%;">+</div>
+					<div style="flex-basis:12.5%;">&#9675;</div>
+					<div style="flex-basis:12.5%;">&#9675;</div>
+					<div style="flex-basis:12.5%;">+</div>
+					<div style="flex-basis:12.5%;">&#9675;</div>
+					<div style="flex-basis:12.5%;">+</div>
+				</div>
+				<div class="table3">
+					<div style="flex-basis:12.5%;">&#11021;</div>
+					<div style="flex-basis:12.5%;">&#8634;</div>
+					<div style="flex-basis:12.5%;">&#11020;</div>
+					<div style="flex-basis:12.5%;">&#8634;</div>
+					<div style="flex-basis:12.5%;">&#8635;</div>
+					<div style="flex-basis:12.5%;">&#11020;</div>
+					<div style="flex-basis:12.5%;">&#8635;</div>
+					<div style="flex-basis:12.5%;">&#11021;</div>
+				</div>
+			</div>
+			<div class="text" style="flex-basis:50%;padding:0;text-align:center;"><b>Крок 1: </b>Абонент А утворює випадкову послідовність бітів, яку поліяризує через послідовність базисів. Послідовність відправляється Абоненту В</div>
+		</div>
+		<svg style="width:100%;height:5vw;">
+		<line x1="25%" y1="0" x2="25%" y2="50%" style="stroke:black;stroke-width:2" />
+		<line x1="25%" y1="50%" x2="75%" y2="50%" style="stroke:black;stroke-width:2" />
+		<line x1="75%" y1="50%" x2="75%" y2="100%" style="stroke:black;stroke-width:2" />
+		</svg>
+		<div id="fe" hidden>
+		<div style="display:flex;width:100%height:40vh;margin-top:-30px;">
+			<div class="text" style="flex-basis:50%;padding:0;text-align:center;"><b>Крок 2: </b>Абонент В аналізує їх через послідовність базисів (під час відправлення фотони можуть втрачатись). При співпадінні базисів сигнал розкодовується в бітове значення</div>
+			<div style="display:inline;flex-basis:50%;border:1px solid black;">
+				<div class="table3">
+					<div style="flex-basis:12.5%;">0</div>
+					<div style="flex-basis:12.5%;">0</div>
+					<div style="flex-basis:12.5%;">1</div>
+					<div style="flex-basis:12.5%;">0</div>
+					<div style="flex-basis:12.5%;">1</div>
+					<div style="flex-basis:12.5%;">1</div>
+					<div style="flex-basis:12.5%;">1</div>
+					<div style="flex-basis:12.5%;">0</div>
+				</div>
+				<div class="table3">
+					<div style="flex-basis:12.5%;">+</div>
+					<div style="flex-basis:12.5%;">&#9675;</div>
+					<div style="flex-basis:12.5%;">+</div>
+					<div style="flex-basis:12.5%;">&#9675;</div>
+					<div style="flex-basis:12.5%;">&#9675;</div>
+					<div style="flex-basis:12.5%;">+</div>
+					<div style="flex-basis:12.5%;">&#9675;</div>
+					<div style="flex-basis:12.5%;">+</div>
+				</div>
+				<div class="table3">
+					<div style="flex-basis:12.5%;">&#11021;</div>
+					<div style="flex-basis:12.5%;">&#8634;</div>
+					<div style="flex-basis:12.5%;">&#11020;</div>
+					<div style="flex-basis:12.5%;">&#8634;</div>
+					<div style="flex-basis:12.5%;">&#8635;</div>
+					<div style="flex-basis:12.5%;">&#11020;</div>
+					<div style="flex-basis:12.5%;">&#8635;</div>
+					<div style="flex-basis:12.5%;">&#11021;</div>
+				</div>
+			</div>
+		</div>
+		<svg style="width:100%;height:5vw;" hidden>
+		<line x1="75%" y1="0%" x2="75%" y2="100%" style="stroke:black;stroke-width:2" />
+		<line x1="75%" y1="50%" x2="25%" y2="50%" style="stroke:black;stroke-width:2" />
+		<line x1="25%" y1="50%" x2="25%" y2="100%" style="stroke:black;stroke-width:2" />
+		</svg>
+		</div>
+		<div id="se" hidden>
+		<div style="display:flex;width:100%height:40vh;margin-top:-30px;" hidden>
+			<div style="display:inline;flex-basis:50%;border:1px solid black;">
+				<div class="table3">
+					<div style="flex-basis:12.5%;">0</div>
+					<div style="flex-basis:12.5%;">0</div>
+					<div style="flex-basis:12.5%;">1</div>
+					<div style="flex-basis:12.5%;">0</div>
+					<div style="flex-basis:12.5%;">1</div>
+					<div style="flex-basis:12.5%;">1</div>
+					<div style="flex-basis:12.5%;">1</div>
+					<div style="flex-basis:12.5%;">0</div>
+				</div>
+				<div class="table3">
+					<div style="flex-basis:12.5%;">+</div>
+					<div style="flex-basis:12.5%;">&#9675;</div>
+					<div style="flex-basis:12.5%;">+</div>
+					<div style="flex-basis:12.5%;">&#9675;</div>
+					<div style="flex-basis:12.5%;">&#9675;</div>
+					<div style="flex-basis:12.5%;">+</div>
+					<div style="flex-basis:12.5%;">&#9675;</div>
+					<div style="flex-basis:12.5%;">+</div>
+				</div>
+			</div>
+			<div class="text" style="flex-basis:50%;padding:0;text-align:center;"><b>Крок 3: </b>Абонент А утворює випадкову послідовність бітів, яку поліяризує через послідовність базисів. Послідовність відправляється Абоненту В</div>
+		</div>
+		<svg style="width:100%;height:5vw;" hidden>
+		<line x1="25%" y1="0" x2="25%" y2="50%" style="stroke:black;stroke-width:2" />
+		<line x1="25%" y1="50%" x2="75%" y2="50%" style="stroke:black;stroke-width:2" />
+		<line x1="75%" y1="0%" x2="75%" y2="50%" style="stroke:black;stroke-width:2" />
+		<line x1="50%" y1="50%" x2="50%" y2="100%" style="stroke:black;stroke-width:2" />
+		</svg>
+		</div>
+		<input id="te" style="width:40%;margin:auto;font-size:1em;height:1.2em;text-align:center;" value="01011" readonly hidden />
+	</div>
+<script>
+var n3=0;
+function next3(){
+$(document).ready(function(){
+switch(n3){
+case 0:$('#fe').show(1000);n3++;break;
+case 1:$('#se').show(1000);n3++;break;
+case 2:$('#te').show(1000);$('#but2').hide(1000);break;
+}
+});
+}	
+</script>
+	<button id="but2" onclick="next3();">Далі</button>
+	</div>
+	
+  </div>
+  <div id="5" style="display: none;">
+  <div>
+	<h2>Практичне завдання №2</h2>
+	<p class="text">Виконайте генрацію спільного секретного ключа довжиною 32 біти у відповідності до протоколу B92 у якості Абонента В за допомогою послідовності вхідних поляризованих фотонів та власної послідовності базисів. 
+	Генерація відбуватиметься у кілька раундів, доки ключ не буде остаточно доповнений.</p>
+	<p class="text">Кожен раунд у відповідності до протоколу має закінчуватись видаленням одного(останнього) біту.</p>
+	<p class="text"></p>
+	<div id="2pw" style="margin-top:2%;" hidden>
+	<div>
+	<textarea id="2pw0" readonly></textarea>
+	<textarea id="2pw1" readonly></textarea>
+	<textarea id="2pw2" readonly></textarea>
+	<textarea id="2pw3" readonly></textarea>
+	<textarea id="2pw4" readonly></textarea>
+	<textarea id="2pw5" readonly></textarea>
+	<textarea id="2pw6" readonly></textarea>
+	<textarea id="2pw7" readonly></textarea>
+	</div>
+	<div class="2pwclass">
+	<textarea id="2pw00" readonly></textarea>
+	<textarea id="2pw01" readonly></textarea>
+	<textarea id="2pw02" readonly></textarea>
+	<textarea id="2pw03" readonly></textarea>
+	<textarea id="2pw04" readonly></textarea>
+	<textarea id="2pw05" readonly></textarea>
+	<textarea id="2pw06" readonly></textarea>
+	<textarea id="2pw07" readonly></textarea>
+	</div>
+	<input id="final_pw2"/><br/>
+	<button onclick="continue_pw2()" id="but4">Наступний раунд</button>
+	
+	</div>
+	<button  onclick="start_pw2()" id="but3">Розпочати</button>
+	<div id="secondwork" hidden><div>Практичне завдання №2 завершене <b style="color:green;">&#10003;</b></div></div>
+  </div>
+  <script>
+  var pw2final="";
+  var fault=0;
+  function start_pw2(){
+	$(document).ready(function(){
+    if(pw2final==""){$('#2pw').show(1000);}
+	for(i=0;i<8;i++){
+	switch(Math.trunc(Math.random()*4)){
+		case 0:$('#2pw'+i).val('↺');break;
+		case 1:$('#2pw'+i).val('⬌');break;
+		case 2:$('#2pw'+i).val('↻');break;
+		case 3:$('#2pw'+i).val('⬍');break;
+	}
+	if(Math.round(Math.random())==0){$('#2pw0'+i).val('○');}else{$('#2pw0'+i).val('+');}
+	}
+	$('#but3').hide(100);
+	});
+  }
+function continue_pw2(){
+var prom="";
+
+$(document).ready(function(){
+	var result_pw2="";
+	var final_pw2="";
+	for(i=0;i<8;i++){
+		if(($('#2pw'+i).val()=='↻'||$('#2pw'+i).val()=='↺')&&($('#2pw0'+i).val()=='○')){result_pw2+=$('#2pw'+i).val();}
+		if(($('#2pw'+i).val()=='⬌'||$('#2pw'+i).val()=='⬍')&&($('#2pw0'+i).val()=='+')){result_pw2+=$('#2pw'+i).val();}
+		}
+	for(i=0;i<result_pw2.length;i++){
+		switch(result_pw2[i]){
+			case '⬍':final_pw2+='0';break;
+			case '⬌':final_pw2+='1';break;
+			case '↺':final_pw2+='0';break;
+			case '↻':final_pw2+='1';break;
+		}
+	}
+	if (final_pw2.length<2){final_pw2="";}else{for(i=0;i<final_pw2.length-1;i++){prom+=final_pw2[i];}final_pw2=prom;}
+	if(final_pw2==$('#final_pw2').val()){pw2final+=final_pw2;start_pw2();}else{fault++;}
+	if(pw2final.length==16||pw2final.length>16){$('#2pw').hide(1000);$('#secondwork').show(1000);res=res+25-fault;}
+	$('#final_pw2').val('');
+	});
+}
+  </script>
+  </div>
+  <div id="6" style="display: none;">
+	<h2>Протокол E91</h2>
+  <div><div class="text">Протокол Е91(EPR-Protocol) - квантовий криптографічний протокол, розроблений в 1991-ому році Артуром Еккертом. Протокол заснований на властивостя так званих "заплутаних" станах квантових часток.
+  Суть принципу (описаного в "ментальному експерименті" Енштейна-Подольського-Розена) полягає в генерації двох фотонів з однаковим базисом, та протилежною поляризацію, які відправляють незалежним джерелом Абонентам А і В.
+  Таким чином алгоритм серйозно відрізняється від протоколів Беннета в кількох моментах:
+  <ol>
+  <li>Абоненти А і В генерують лише послідовність базисів для перевірки отриманих послідовностей випадкових поляризованих фотонів, а не самі послідовності</li>
+  <li>На відміну від попередніх протоколів в Е91 використовуються три базиси поляризації</li>
+  <li>Протокол, окрім природних властивостей квантового зв'язку має додатковийй інструмент виявлення прослуховування мережі - нерівність Белла</li>
+  <li>Елементи послідовностей, що не пройшли перевірку Абонентів не знищуються, а використовуються для визначення наявності криптоаналітика в мережі</li>
+  </ol>
+  </div>
+  <div id="p60" hidden>
+  <svg width="100%" height="40%" style="margin:0;">
+
+  <line x1="49vw" y1="1%" x2="49vw" y2="60%" style="stroke:lightblue;stroke-width:5" />
+  <line x1="51vw" y1="1%" x2="51vw" y2="60%" style="stroke:lightblue;stroke-width:5" />
+  <line x1="49vw" y1="60%" x2="25vw" y2="100%" style="stroke:lightblue;stroke-width:5" />
+  <line x1="51vw" y1="60%" x2="75vw" y2="100%" style="stroke:lightblue;stroke-width:5" />
+  <ellipse class="square3" cx="49vw" cy="1%" rx="5" ry="5" style="fill:yellow;stroke:none;" />
+  <ellipse class="square4" cx="51vw" cy="1%" rx="5" ry="5" style="fill:yellow;stroke:none;" />
+  <rect x="47.5vw" y="1%" width="5vw" height="5vw" style="fill:yellow;stroke:black;stroke-width:5;opacity:1" />
+  </svg>
+  <div style="display:flex;height:3%;padding:0;margin-top:-2%;">
+  <div style="flex-basis:50%;" id="6text1"></div>
+  <div style="flex-basis:50%;" id="6text2"></div>
+  </div>
+  </div>
+  <div id="p61" hidden>
+  <div style="display:flex;">
+  <div style="flex-basis:50%;">
+  <div>
+	<textarea id="1ex00" readonly></textarea>
+	<textarea id="1ex01" readonly></textarea>
+	<textarea id="1ex02" readonly></textarea>
+	<textarea id="1ex03" readonly></textarea>
+	<textarea id="1ex04" readonly></textarea>
+	<textarea id="1ex05" readonly></textarea>
+	<textarea id="1ex06" readonly></textarea>
+	<textarea id="1ex07" readonly></textarea>
+	<div style="font-size:0.8em;line-height:0.9em;"><b>Крок 1. </b>Незалежне джерело генерує пару фотонів поляризованих в одному базисі, та з протилежними значеннями</div>
+	</div>
+  </div>
+  <div style="flex-basis:50%;">
+    <div>
+	<textarea id="2ex00" readonly></textarea>
+	<textarea id="2ex01" readonly></textarea>
+	<textarea id="2ex02" readonly></textarea>
+	<textarea id="2ex03" readonly></textarea>
+	<textarea id="2ex04" readonly></textarea>
+	<textarea id="2ex05" readonly></textarea>
+	<textarea id="2ex06" readonly></textarea>
+	<textarea id="2ex07" readonly></textarea>
+	<div style="font-size:0.8em;line-height:0.9em;"><b>Крок 2. </b>Пара розсилається абонентам - по одному фотону кожному</div>
+	</div>
+  </div>
+  </div>
+ </div>
+ <div id="p62" style="margin-top:5vh;" hidden>
+    <div style="display:flex;">
+  <div style="flex-basis:50%;">
+  <div>
+	<textarea id="1ex10" readonly></textarea>
+	<textarea id="1ex11" readonly></textarea>
+	<textarea id="1ex12" readonly></textarea>
+	<textarea id="1ex13" readonly></textarea>
+	<textarea id="1ex14" readonly></textarea>
+	<textarea id="1ex15" readonly></textarea>
+	<textarea id="1ex16" readonly></textarea>
+	<textarea id="1ex17" readonly></textarea>
+	<div style="font-size:0.8em;line-height:0.9em;"><b>Крок 3. </b>Кожен з абонентів незалежно генерує власну послідовність базисів</div>
+	</div>
+  </div>
+  <div style="flex-basis:50%;">
+    <div>
+	<textarea id="2ex10" readonly></textarea>
+	<textarea id="2ex11" readonly></textarea>
+	<textarea id="2ex12" readonly></textarea>
+	<textarea id="2ex13" readonly></textarea>
+	<textarea id="2ex14" readonly></textarea>
+	<textarea id="2ex15" readonly></textarea>
+	<textarea id="2ex16" readonly></textarea>
+	<textarea id="2ex17" readonly></textarea>
+	<div style="font-size:0.8em;line-height:0.9em;"><b>Крок 4. </b>Отримані послідовності фотонів аналізуються за базисам абонентів</div>
+	</div>
+  </div>
+  </div>
+  
+<script>
+var time=0;
+setInterval(()=>{switch(time){
+case 0:document.getElementById('6text1').innerHTML=document.getElementById('1ex00').value;document.getElementById('6text2').innerHTML=document.getElementById('2ex00').value;break;
+case 1:document.getElementById('6text1').innerHTML=document.getElementById('1ex01').value;document.getElementById('6text2').innerHTML=document.getElementById('2ex01').value;break;
+case 2:document.getElementById('6text1').innerHTML=document.getElementById('1ex02').value;document.getElementById('6text2').innerHTML=document.getElementById('2ex02').value;break;
+case 3:document.getElementById('6text1').innerHTML=document.getElementById('1ex03').value;document.getElementById('6text2').innerHTML=document.getElementById('2ex03').value;break;
+case 4:document.getElementById('6text1').innerHTML=document.getElementById('1ex04').value;document.getElementById('6text2').innerHTML=document.getElementById('2ex04').value;break;
+case 5:document.getElementById('6text1').innerHTML=document.getElementById('1ex05').value;document.getElementById('6text2').innerHTML=document.getElementById('2ex05').value;break;
+case 6:document.getElementById('6text1').innerHTML=document.getElementById('1ex06').value;document.getElementById('6text2').innerHTML=document.getElementById('2ex06').value;break;
+case 7:document.getElementById('6text1').innerHTML=document.getElementById('1ex07').value;document.getElementById('6text2').innerHTML=document.getElementById('2ex07').value;break;
+}
+time++;if (time==8){time=0;}},1000);
+var n6=0;
+anime({
+targets: ['.square3'],
+keyframes: [
+    {translateY:'59%'},
+	{translateY:'100%',translateX:'-25vw'}
+  ],
+  duration: 1000,
+  easing: 'linear',
+  loop: true
+});
+anime({
+targets: ['.square4'],
+keyframes: [
+    {translateY:'59%'},
+	{translateY:'100%',translateX:'25vw'}
+  ],
+  duration: 1000,
+  easing: 'linear',
+  loop: true
+});
+anime({
+targets:['.6text1'],
+keyframes:[{innerHTML:document.getElementById('2ex00').value},
+		   {innerHTML:document.getElementById('2ex01').value},
+		   {innerHTML:document.getElementById('2ex02').value},
+		   {innerHTML:document.getElementById('2ex03').value},
+		   {innerHTML:document.getElementById('2ex04').value},
+		   {innerHTML:document.getElementById('2ex05').value},
+		   {innerHTML:document.getElementById('2ex06').value},
+		   {innerHTML:document.getElementById('2ex07').value},],
+duration:8000,
+loop:true,
+easing:'linear'
+});
+function next4(){
+switch (n6){
+case 0:$(document).ready(function(){$('#p61').show(1000);$('#p60').show(1000);
+for (i=0;i<8;i++){
+	var rand3=Math.trunc(Math.random()*6);
+	switch(rand3){
+		case 0:$('#1ex0'+i).val('/');$('#2ex0'+i).val('\\');break;
+		case 1:$('#1ex0'+i).val('|');$('#2ex0'+i).val('-');break;
+		case 2:$('#1ex0'+i).val('↻');$('#2ex0'+i).val('↺');break;
+		case 3:$('#1ex0'+i).val('\\');$('#2ex0'+i).val('/');break;
+		case 4:$('#1ex0'+i).val('-');$('#2ex0'+i).val('|');break;
+		case 5:$('#1ex0'+i).val('↺');$('#2ex0'+i).val('↻');break;
+	}
+	rand3=Math.trunc(Math.random()*3);
+		switch(rand3){
+		case 0:$('#1ex1'+i).val('○');break;
+		case 1:$('#1ex1'+i).val('+');break;
+		case 2:$('#1ex1'+i).val('x');break;
+	}
+	rand3=Math.trunc(Math.random()*3);
+	switch(rand3){
+		case 0:$('#2ex1'+i).val('○');break;
+		case 1:$('#2ex1'+i).val('+');break;
+		case 2:$('#2ex1'+i).val('x');break;
+	}
+	}
+	});n6++;break;
+case 1:$(document).ready(function(){$('#p62').show(1000);});n6++;break;
+case 2:$(document).ready(function(){$('#p63').show(1000);
+for (i=0;i<8;i++){
+var prom1=$('#1ex0'+i).val();
+switch($('#1ex1'+i).val()){
+case '○':switch(prom1){case '↺':$('#1ex2'+i).val(1);break;case '↻':$('#1ex2'+i).val(0);break;default:$('#1ex2'+i).prop('disabled',true);}break;
+case '+':switch(prom1){case '-':$('#1ex2'+i).val(1);break;case '|':$('#1ex2'+i).val(0);break;default:$('#1ex2'+i).prop('disabled',true);}break;
+case 'x':switch(prom1){case '\\':$('#1ex2'+i).val(1);break;case '/':$('#1ex2'+i).val(0);break;default:$('#1ex2'+i).prop('disabled',true);}break;
+}
+switch($('#2ex1'+i).val()){
+case '○':switch(prom1){case '↺':$('#2ex2'+i).val(1);break;case '↻':$('#2ex2'+i).val(0);break;default:$('#2ex2'+i).prop('disabled',true);}break;
+case '+':switch(prom1){case '-':$('#2ex2'+i).val(1);break;case '|':$('#2ex2'+i).val(0);break;default:$('#2ex2'+i).prop('disabled',true);}break;
+case 'x':switch(prom1){case '\\':$('#2ex2'+i).val(1);break;case '/':$('#2ex2'+i).val(0);break;default:$('#2ex2'+i).prop('disabled',true);}break;
+}
+}
+});n6++;break;
+case 3:$(document).ready(function(){
+$('#p64').show(1000);
+var prom2=0;
+for(i=0;i<8;i++){
+if($('#1ex2'+i).val()!=""&&$('#2ex2'+i).val()!=""&&$('#1ex2'+i).val()==$('#2ex2'+i).val()){$('#1ex3'+i).val($('#1ex2'+i).val());prom2++;}else{$('#1ex3'+i).prop('disabled',true);}
+}
+$('#but5').hide();
+});n6++;break;
+}
+}
+
+</script>
+  </div>
+    <div id="p63" style="margin-top:5vh;" hidden>
+  <div style="display:flex;">
+  <div style="flex-basis:50%;">
+  <div>
+	<textarea id="1ex20" readonly></textarea>
+	<textarea id="1ex21" readonly></textarea>
+	<textarea id="1ex22" readonly></textarea>
+	<textarea id="1ex23" readonly></textarea>
+	<textarea id="1ex24" readonly></textarea>
+	<textarea id="1ex25" readonly></textarea>
+	<textarea id="1ex26" readonly></textarea>
+	<textarea id="1ex27" readonly></textarea>
+	<div style="font-size:0.8em;line-height:0.9em;"><b>Крок 5. </b>Один з абонентів інвертує отримані значення, аби синхронізуватись з іншим абонентом</div>
+	</div>
+  </div>
+  <div style="flex-basis:50%;">
+    <div>
+	<textarea id="2ex20" readonly></textarea>
+	<textarea id="2ex21" readonly></textarea>
+	<textarea id="2ex22" readonly></textarea>
+	<textarea id="2ex23" readonly></textarea>
+	<textarea id="2ex24" readonly></textarea>
+	<textarea id="2ex25" readonly></textarea>
+	<textarea id="2ex26" readonly></textarea>
+	<textarea id="2ex27" readonly></textarea>
+	<div style="font-size:0.8em;line-height:0.9em;"><b>Крок 6. </b>Абоненти повідомляють номери базисів, які успішно проаналізували значення.</div>
+	</div>
+  </div>
+  </div>
+ </div>
+    <div id="p64" style="margin-top:5vh;" hidden>
+    <div>
+	<textarea id="1ex30" readonly></textarea>
+	<textarea id="1ex31" readonly></textarea>
+	<textarea id="1ex32" readonly></textarea>
+	<textarea id="1ex33" readonly></textarea>
+	<textarea id="1ex34" readonly></textarea>
+	<textarea id="1ex35" readonly></textarea>
+	<textarea id="1ex36" readonly></textarea>
+	<textarea id="1ex37" readonly></textarea>
+	<div style="font-size:0.8em;line-height:0.9em;" id="krok7"><b>Крок 7. </b>Генеруються "чистий" і відкинутий ключі</div>
+	</div>
+	<div style="font-size:0.8em;line-height:0.9em;padding:5vh"><b>Крок 7.1. </b>Відкинутий ключ застосовується в нерівності Белла, яка повинна виявляти криптоаналітиків в мережі</div>
+	<div style="font-size:0.8em;line-height:0.9em;padding:3vh"><b>Зауважння: </b>Класична варіація протоколу E91 з досить високою імовірністю може не дати чистому ключу в результаті раунду жодного значення, тому ефективне використання протоколу вимагає більшої кількості раундів ніж інші протоколи квантової криптографії</div>
+
+ 
+ </div>
+  <button id="but5" onclick="next4();">Далі</button>
+  </div>  
+  </div>  
+  <div id="7" style="display: none;">
+	<div>
+	<h2>Практичне завдання №3</h2>
+	<div style="width:100%;display:flex;">
+	<div style="padding:1.5%;padding-top:0;flex-basis:50%;width:100%;self-align:center;margin: 0 auto; text-align: center;">
+		<canvas id="canvas"></canvas>
+	</div>
+	<div class="text" style="flex-basis:50%;">Неприємною особливістю протоколу Еккерта є вкрай низька "швідкість" генерації ключа. Так, імовірність успішної генерації біту ключа за даним протоколом складає близько 16-18%<br/><br/>На графіку зображено імовірності генерації різних кількостей бітів за один раунд в протоколах BB84 і E91</div>
+	
+	</div>
+	<script>
+		var MONTHS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
+		var config = {
+			type: 'line',
+			data: {
+				labels: ['0', '1', '2', '3', '4', '5', '6', '7'],
+				datasets: [{
+					label: 'E91',
+					backgroundColor: window.chartColors.red,
+					borderColor: window.chartColors.red,
+					data: [
+						Math.pow(0.84,8),
+						Math.pow(0.84,7)*0.16*8,
+						Math.pow(0.84,6)*Math.pow(0.16,2)*8,
+						Math.pow(0.84,5)*Math.pow(0.16,3)*8,
+						Math.pow(0.84,4)*Math.pow(0.16,4)*8,
+						Math.pow(0.84,3)*Math.pow(0.16,5)*8,
+						Math.pow(0.84,2)*Math.pow(0.16,6)*8,
+						0.84*Math.pow(0.16,7)*8
+					],
+					fill: false,
+				}, {
+					label: 'BB84',
+					fill: false,
+					backgroundColor: window.chartColors.blue,
+					borderColor: window.chartColors.blue,
+					data: [
+						Math.pow(0.5,8),
+						Math.pow(0.5,1),
+						Math.pow(0.5,2),
+						Math.pow(0.5,3),
+						Math.pow(0.5,4),
+						Math.pow(0.5,5),
+						Math.pow(0.5,6),
+						Math.pow(0.5,7)
+					],
+				}]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Імовірність',
+					position: 'bottom'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'average',
+					intersect: true
+				},
+				legend: {
+				position:'bottom'
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Біти'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: '%'
+						}
+					}]
+				}
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+		};
+
+window.myLine.update();
+	</script>
+	</div>
+  </div>
+  <div id="8" style="display: none;">
+	<div>
+	<h2>Протокол SARG-04</h2>
+	<div><p class="text">Протокол SARG-04 - протокол квантової криптографії, що був розроблений групою криптографів (В.Скарані, А.Асін, Н.Ґісін) у 2004 році на основі протоколів BB84 і B92.</p>
+	<p class="text">Головною перевагою даного протоколу є цілковита стійкість до так званих PNS-атак(Photon Number Splitting attack).</p></div>
+		<div style="display:flex;width:100%;height:4vh;" >
+			<div style="display:inline;flex-basis:50%;">Абонент А</div>
+			<div style="display:inline;flex-basis:50%;">Абонент В</div>
+	</div>
+	<svg width="100%" height="40%">
+		<line x1="5%" y1="40%" x2="85%" y2="40%" style="stroke-dasharray: 5 10; stroke: black; stroke-width: 1px;"/>
+		<line x1="72.5%" y1="40%" x2="72.5%" y2="80%" style="stroke-dasharray: 5 10; stroke: black; stroke-width: 1px;"/>
+		<line x1="72.5%" y1="80%" x2="90%" y2="80%" style="stroke-dasharray: 5 10; stroke: black; stroke-width: 1px;"/>
+		<line x1="72.5%" y1="90%" x2="90%" y2="90%" style="stroke-dasharray: 5 10; stroke: black; stroke-width: 1px;"/>
+		<line x1="50%" y1="0%" x2="50%" y2="100%" style="stroke: black; stroke-width: 1px;"/>
+		<ellipse  rx="0.12em" ry="0.12em" cx="5%" cy="40%" style="fill:yellow;" class="square5"/>
+		<ellipse  rx="0.12em" ry="0.12em" cx="5%" cy="40%" style="fill:yellow;" class="square6"/>
+		<ellipse  rx="0.12em" ry="0.12em" cx="5%" cy="40%" style="fill:yellow;" class="square7"/>
+		<rect x="5%" y="35%" width="5%" height="10%" style="fill:yellow;stroke:black;stroke-width:1;opacity:1"/>
+		<rect x="5%" y="35%" width="4%" height="10%" style="fill:black;stroke:black;stroke-width:1;opacity:1"/>
+		<rect x="70%" y="75%" width="5%" height="20%" style="fill:lightblue;stroke:black;stroke-width:1;opacity:1"/>
+		<rect x="25%" y="30%" width="5%" height="20%" style="fill:lightblue;stroke:black;stroke-width:1;opacity:1"/>
+		<rect x="70%" y="30%" width="5%" height="20%" style="fill:lightblue;stroke:black;stroke-width:1;opacity:1"/>
+		<rect x="80%" y="75%" width="5%" height="20%" style="fill:lightblue;stroke:black;stroke-width:1;opacity:1"/>
+	</svg>
+	<script>
+	var anime81=anime({
+	targets: ['.square5'],
+	keyframes: [
+    {translateX:'67.5%',duration:3000},
+	{translateY:'40%',duration:300},
+	{translateX:'85%',duration:800}
+	],
+  easing: 'linear',
+  loop: true
+	});
+	var anime82=anime({
+	targets: ['.square6'],
+	keyframes: [
+	{translateX:'67.5%',duration:3000},
+    {translateX:'85%',duration:800}
+	],
+  easing: 'linear',
+  loop: true
+	});
+	var anime83=anime({
+	targets: ['.square7'],
+	keyframes: [
+    {translateX:'67.5%',duration:3000},
+	{translateY:'50%',duration:300},
+	{translateX:'85%',duration:800}
+	],
+	delay:500,
+  easing: 'linear',
+  loop: true
+	});
+	function pause8(){
+		$(document).ready(function(){
+		anime81.pause();
+		anime82.pause();
+		anime83.pause();
+		$("#but6").prop('disabled',true);
+		$("#but7").prop('disabled',false);
+		});
+	}
+		function start8(){
+		anime81.play();
+		anime82.play();
+		anime83.play();
+		$(document).ready(function(){
+		$("#but7").prop('disabled',true);
+		$("#but6").prop('disabled',false);
+		});
+	}
+	</script>
+	<button id="but6" onclick="pause8();">Пауза</button><button id="but7" onclick="start8();" disabled>Старт</button>
+	<div id="8page" hidden>
+	<div style="display:flex;width:100%;height:4vh;" >
+		<div>
+	</div>
+	</div>
+	</div>
+	<button id="but8" onclick="next5();">Далі</button>
+	<script>
+	var n8=0;
+	function next5(){
+	$(document).ready(function(){$('#8page').show(2000);
+	for (i=0;i<8;i++){
+	$('#ex8'+i).val(Math.trunc(Math.random()*2));
+	}
+	});
+	}
+	</script>
+  </div>
+</div>
+</div>
+<p align="center"><button id="sub" onclick="sub()">Попередня</button><button id="add" onclick="add()">Наступна</button></p>
+
+<script>
+function texting(){
+$(document).ready(function(){$('#t1').show(2000);});
+}
+
+var f=1;
+function sub(){
+$(document).ready(function(){
+if (f!=1){
+  $("#"+f).css("display", "none");
+  $("#"+(f-1)).css("display", "block");
+  f--;}
+});
+}
+function add(){
+$(document).ready(function(){
+if (f!=8){
+  $("#"+f).css("display", "none");
+  $("#"+(f+1)).css("display", "block");
+  f++;}
+});
+}
+</script>
 </body>
 </html>
