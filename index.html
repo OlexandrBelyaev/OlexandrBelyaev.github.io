@@ -984,7 +984,7 @@ $('#but5').hide();
 var prakt3length=Math.trunc(8+Math.random()*16);
 var pract3chance=Math.trunc(1+Math.random()*8);
 var pract3result=Math.trunc(Math.pow(1/9,pract3chance)*Math.pow(8/9,prakt3length-pract3chance)*1000000);
-
+alert(pract3result);
 $(document).ready(function(){
 	$('.pract3length').append(prakt3length);
 	$('.pract3chance').append(" "+pract3chance+" бітів");
