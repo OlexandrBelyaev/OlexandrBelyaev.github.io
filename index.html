@@ -61,7 +61,7 @@ body{background-color: #DADCDE;}
 <div id="main" class="flex-container">
 
   <div id="1"><div><h2>Вступ</h2></div>
-	<div><p class="text">Квантовий розподіл ключа - метод передачі ключа, який
+	<div><p class="text" id="vstup">Квантовий розподіл ключа - метод передачі ключа, який
 використовує квантові явища для гарантії безпечної зв'язку. Цей метод
 дозволяє двом сторонам, з'єднаним з відкритого каналу зв'язку, створити
 загальний випадковий ключ, який відомий тільки їм, і використовувати
@@ -900,6 +900,7 @@ $('#but5').hide();$("#add").show(1000);
 	$(document).ready(function(){
 		if (pract3result==$("#pract3answer").val()){
 		alert(true);
+		$("#add").show(1000);
 		}
 	});
 	}
@@ -1187,7 +1188,7 @@ $(document).ready(function(){
 	case 1:$('#8page1').show(1000);n8++;break;
 	case 2:$('#8page2').show(1000);n8++;break;
 	case 3:$('#8page3').show(1000);n8++;break;
-	case 4:$('#8page4').show(1000);n8++;
+	case 4:$('#8page4').show(1000);n8++;$('#add').show(1000);
 	default:$('#but8').hide(1000);
 	}
 	});
@@ -1200,18 +1201,96 @@ $(document).ready(function(){
 <div id="9" style="display: none;">
 	<div>
 	<h2>Практичне завдання №4</h2>
+		<div>
+			<p class="text">У відповідності до зчитаних значень фотонів та набору неортогональних базисів декодуйте біти для формування секретного ключа для протоколу SARG-04 довжиною 16 біт:</p>
+			<p class="text"><br/><b>Підказка: </b>порівняйте чи є значення поляризації фотона ортогональним (перпендикулярним) з одним з набору базисів. Якщо так, то візьміть інше (неортогональне) значення в наборі і занесіть значення його біта (0 або 1) в ключ</p>
+		</div>
+		<div id="pract51" style="display:flex;">
+		     <div style="flex-basis:100%;padding-top:2vh;">
+		        <div>
+					<textarea id="ex40" readonly></textarea>
+					<textarea id="ex41" readonly></textarea>
+					<textarea id="ex42" readonly></textarea>
+					<textarea id="ex43" readonly></textarea>
+					<textarea id="ex44" readonly></textarea>
+					<textarea id="ex45" readonly></textarea>
+					<textarea id="ex46" readonly></textarea>
+					<textarea id="ex47" readonly></textarea>
+					<div style="font-size:0.8em;line-height:0.9em;">
+						<p><b id="4pract1"></b> - 1</p>
+						<p><b id="4pract0"></b> - 0</p>
+					</div>
+				</div>
+		    </div>
+		</div>
+		<div id="pract52" style="display:flex;">
+		     <div style="flex-basis:100%;padding-top:2vh;">
+		        <div>
+					<textarea id="ex48"></textarea>
+					<textarea id="ex49"></textarea>
+					<textarea id="ex410" ></textarea>
+					<textarea id="ex411" ></textarea>
+					<textarea id="ex412" ></textarea>
+					<textarea id="ex413" ></textarea>
+					<textarea id="ex414" ></textarea>
+					<textarea id="ex415" ></textarea>
+					<div style="font-size:0.8em;line-height:0.9em;">
+						<p><button id="next6" onclick="pract4resultfunc();">Далі</button></p>
+					</div>
+				</div>
+		    </div>
 
+		</div>
+		<div id="fourw" hidden>Практичне завдання №4 завершене <b style="color:green;">&#10003;</b></div>
 	</div>
+<script>
+	var pract4answer="";
+	var pract4result="";
+	function pract4func(){
+	$(document).ready(function(){
+	switch (Math.trunc(Math.random()*2)){
+		case 0:$("#4pract1").text('→');$("#4pract0").text('⤢');break;
+		case 1:$("#4pract1").text('⤡');$("#4pract0").text('↑');break;
+	}
+	for (i=0;i<8;i++){
+		switch(Math.trunc(Math.random()*4)){
+			case 0:$("#ex4"+i).val('→');break;
+			case 1:$("#ex4"+i).val('⤢');break;
+			case 2:$("#ex4"+i).val('⤡');break;
+			case 3:$("#ex4"+i).val('↑');break;
+		}
+	}
+	
+	
+	});}
+	var practresult4=0;
+	function pract4resultfunc(){
+	var pract4result=[];
+	
+	$(document).ready(function(){
+		for(i=0;i<8;i++){
+			switch ($("#ex4"+i).val()){
+				case '→':if ($("#4pract0").text()=="↑"){pract4result[i]="1";};break;
+				case '⤢':if ($("#4pract1").text()=="⤡"){pract4result[i]="0";};break;
+				case '⤡':if ($("#4pract0").text()=="⤢"){pract4result[i]="1";};break;
+				case '↑':if ($("#4pract1").text()=="→"){pract4result[i]="0";};break;
+			}
+			if ($("#ex4"+(i+8)).val()==pract4result[i]){practresult4+=1;}
+			$("#ex4"+(i+8)).val('');
+		}
+		alert(practresult4);
+		if (practresult4<16){pract4func();}else{$("#pract51").hide(500);$("#pract52").hide(500);$("#next6").hide(1000);$("#fourw").show(500);$("#add").show(1000);}
+	});
+	}
+	pract4func();
+</script>
 </div>
-
 </div>
 <p align="center"><button id="sub" onclick="sub()">Попередня</button><button id="add" onclick="add()">Наступна</button></p>
-
 <script>
 function texting(){
 $(document).ready(function(){$('#t1').show(2000);});
 }
-
 var f=1;
 function sub(){
 $(document).ready(function(){
@@ -1223,9 +1302,9 @@ if (f!=1){
 }
 function add(){
 $(document).ready(function(){
-if (f!=8){
-  $("#"+f).css("display", "none");
-  $("#"+(f+1)).css("display", "block");
+if (f!=10){
+  $("#"+f).css("display","none");
+  $("#"+(f+1)).css("display","block");
   $("#add").hide();
   f++;}
 });
