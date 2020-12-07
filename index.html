@@ -984,6 +984,7 @@ $('#but5').hide();
 var prakt3length=Math.trunc(8+Math.random()*16);
 var pract3chance=Math.trunc(1+Math.random()*8);
 var pract3result=Math.trunc(Math.pow(1/9,pract3chance)*Math.pow(8/9,prakt3length-pract3chance)*1000000);
+
 $(document).ready(function(){
 	$('.pract3length').append(prakt3length);
 	$('.pract3chance').append(" "+pract3chance+" бітів");
@@ -1068,24 +1069,132 @@ $(document).ready(function(){
 	}
 	</script>
 	<button id="but6" onclick="pause8();">Пауза</button><button id="but7" onclick="start8();" disabled>Старт</button>
-	<div id="8page" hidden>
-	<div style="display:flex;width:100%;height:4vh;" >
-		<div>
+	<div style="margin-bottom:15vh;padding:2%" id="8page" hidden>
+	<div style="display:flex;height:4vh;" >
+		<div style="flex-basis:50vw;">
+			<div>
+				<textarea id="1ex40" readonly>0</textarea>
+				<textarea id="1ex41" readonly>0</textarea>
+				<textarea id="1ex42" readonly>1</textarea>
+				<textarea id="1ex43" readonly>1</textarea>
+				<textarea id="1ex44" readonly>1</textarea>
+				<textarea id="1ex45" readonly>1</textarea>
+				<textarea id="1ex46" readonly>0</textarea>
+				<textarea id="1ex47" readonly>0</textarea>
+				
+			</div>
+			<div>
+				<textarea id="1ex40" readonly>+</textarea>
+				<textarea id="1ex41" readonly>+</textarea>
+				<textarea id="1ex42" readonly>+</textarea>
+				<textarea id="1ex43" readonly>+</textarea>
+				<textarea id="1ex44" readonly>x</textarea>
+				<textarea id="1ex45" readonly>x</textarea>
+				<textarea id="1ex46" readonly>x</textarea>
+				<textarea id="1ex47" readonly>x</textarea>
+			</div>
+		</div>
+		<div style="margin:auto;font-size:0.8em;line-height:1.5rem;flex-basis:50vw;"><p><b>Крок 1.</b> Абонент А генерує послідовність випадкових бітів та послідовність випадкових базисів</p></div>
 	</div>
+</div>
+
+<div style="margin-bottom:15vh;margin-top:5vh;padding:2%;" id="8page1" hidden>
+	<div style="display:flex;height:4vh;">
+	<div style="margin:auto;font-size:0.8em;line-height:1.5rem;flex-basis:50vw;"><p><b>Крок 2.</b> Поляризована послідовність надсилається Абоненту В, який вимірює її вектором випадкових базисів</p></div>
+		<div style="flex-basis:50vw;">
+			<div>
+				<textarea id="1ex40" readonly>↑</textarea>
+				<textarea id="1ex41" readonly>↑</textarea>
+				<textarea id="1ex42" readonly>→</textarea>
+				<textarea id="1ex43" readonly>→</textarea>
+				<textarea id="1ex44" readonly>⤡</textarea>
+				<textarea id="1ex45" readonly>⤡</textarea>
+				<textarea id="1ex46" readonly>⤢</textarea>
+				<textarea id="1ex47" readonly>⤢</textarea>
+				
+			</div>
+			<div>
+				<textarea id="1ex40" readonly>+</textarea>
+				<textarea id="1ex41" readonly>x</textarea>
+				<textarea id="1ex42" readonly>+</textarea>
+				<textarea id="1ex43" readonly>x</textarea>
+				<textarea id="1ex44" readonly>+</textarea>
+				<textarea id="1ex45" readonly>x</textarea>
+				<textarea id="1ex46" readonly>+</textarea>
+				<textarea id="1ex47" readonly>x</textarea>
+			</div>
+		</div>
 	</div>
+</div>	
+
+<div style="margin-bottom:15vh;margin-top:5vh;padding:2%;" id="8page2" hidden>
+	<div style="display:flex;height:4vh;">
+		<div style="flex-basis:50vw;">
+			<div>
+				<textarea readonly>↑</textarea>
+				<textarea readonly>⤡</textarea>
+				
+			</div>
+			<div style="margin:auto;font-size:0.8em;line-height:1.1rem;">
+				<p><b>↑</b> - 0; <b>⤡</b> - 1</p>
+			</div>
+		</div>
+		<div style="margin:auto;font-size:0.8em;line-height:1.5rem;flex-basis:50vw;"><p><b>Крок 3.</b> Відкритим каналом зв'язку Абонент A анонсує номер набору неортогональних (неперпендикулярних між собою) базисів, якими мають декодовуватись квантові значення</p></div>
 	</div>
-	<button id="but8" onclick="next5();">Далі</button>
+</div>
+
+<div style="margin-bottom:15vh;margin-top:5vh;padding:2%;" id="8page3" hidden>
+	<div style="display:flex;height:4vh;">
+	<div style="margin:auto;font-size:0.8em;line-height:1.5rem;flex-basis:50vw;"><p><b>Крок 4.</b> Виміряні на 2-ому кроці Абонентом В значення, декодуються за допомогою анонсованого Абонентом А набору неортогональних базисів, після чого значення виміряних бітів інвертуються</p></div>
+		<div style="flex-basis:50vw;">
+			<div>
+				<textarea id="1ex40" readonly>↑</textarea>
+				<textarea id="1ex41" readonly>⤡</textarea>
+				<textarea id="1ex42" readonly>→</textarea>
+				<textarea id="1ex43" readonly>⤡</textarea>
+				<textarea id="1ex44" readonly>↑</textarea>
+				<textarea id="1ex45" readonly>⤢</textarea>
+				<textarea id="1ex46" readonly>↑</textarea>
+				<textarea id="1ex47" readonly>⤢</textarea>
+			</div>
+			<div>
+				<textarea id="1ex40" readonly> </textarea>
+				<textarea id="1ex41" readonly>0</textarea>
+				<textarea id="1ex42" readonly> </textarea>
+				<textarea id="1ex43" readonly>1</textarea>
+				<textarea id="1ex44" readonly>1</textarea>
+				<textarea id="1ex45" readonly> </textarea>
+				<textarea id="1ex46" readonly>0</textarea>
+				<textarea id="1ex47" readonly> </textarea>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="margin-bottom:15vh;margin-top:5vh;padding:2%;" id="8page4" hidden>
+	<div style="display:flex;height:4vh;">
+	<div style="margin:auto;font-size:0.8em;line-height:1.5rem;"><p><b>Крок 5.</b> Абонент В повідомляє Абоненту А класичним каналом зв'язку номери успішно виміряних бітів. Вектор, утворений з цих бітів стає спільним секретним ключем</p></div>	
+	</div>
+</div>
+			
 	<script>
 	var n8=0;
 	function next5(){
-	$(document).ready(function(){$('#8page').show(2000);
-	for (i=0;i<8;i++){
-	$('#ex8'+i).val(Math.trunc(Math.random()*2));
+	$(document).ready(function(){
+	switch (n8) {
+	case 0:$('#8page').show(1000);n8++;break;
+	case 1:$('#8page1').show(1000);n8++;break;
+	case 2:$('#8page2').show(1000);n8++;break;
+	case 3:$('#8page3').show(1000);n8++;break;
+	case 4:$('#8page4').show(1000);n8++;
+	default:$('#but8').hide(1000);
 	}
 	});
 	}
 	</script>
-  </div>
+	<button id="but8" onclick="next5();">Далі</button>
+</div>
 </div>
 </div>
 <p align="center"><button id="sub" onclick="sub()">Попередня</button><button id="add" onclick="add()">Наступна</button></p>
