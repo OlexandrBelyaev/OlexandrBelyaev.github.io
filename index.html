@@ -1235,6 +1235,8 @@ $(document).ready(function(){
 					<textarea id="ex414" ></textarea>
 					<textarea id="ex415" ></textarea>
 					<div style="font-size:0.8em;line-height:0.9em;">
+					<label for="progress4">Ключ: </label>
+					<progress id="progress4" value="0" max="16"></progress>
 						<p><button id="next6" onclick="pract4resultfunc();">Далі</button></p>
 					</div>
 				</div>
@@ -1278,13 +1280,198 @@ $(document).ready(function(){
 			if ($("#ex4"+(i+8)).val()==pract4result[i]){practresult4+=1;}
 			$("#ex4"+(i+8)).val('');
 		}
-		alert(practresult4);
+		$("#progress4").attr('value',practresult4);
 		if (practresult4<16){pract4func();}else{$("#pract51").hide(500);$("#pract52").hide(500);$("#next6").hide(1000);$("#fourw").show(500);$("#add").show(1000);}
 	});
 	}
+	
 	pract4func();
 </script>
 </div>
+<div id="10" style="display: none;">
+	<div>
+	<h2>Протокол KMB-09</h2>
+		<div>
+			<p class="text">Протокол KMB09 (названий на честь Мухаммеда Мубашира Хана, Майкла Мерфі та Алмута Бежа) - це альтернативний протокол розподілу квантових ключів, де Абоненти А і В використовують дві взаємно неупереджені бази, одна з яких кодує 0, а інша кодує 1.</p>
+		</div>
+	</div>
+	<div>
+		<table style="width:80%;margin-top:2%;" align="center" border="1">
+		<tr>
+			<td></td>
+			<td>e1</td>
+			<td>e2</td>
+			<td>f1</td>
+			<td>f2</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>x</td>
+			<td>1</td>
+			<td>x</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>1</td>
+			<td>x</td>
+			<td>0</td>
+			<td>x</td>
+		</tr>
+		</table>
+		<div style="margin:auto;font-size:0.8em;line-height:1.5rem;"><p><b>Підготовчий етап.</b> Абоненти домовляються про набір проіндексованих неупереджених базисів</p></div>	
+	</div>
+	<div id="9page" hidden>
+		<div>
+			<textarea id="ex58" readonly></textarea>
+			<textarea id="ex59" readonly></textarea>
+			<textarea id="ex510" readonly></textarea>
+			<textarea id="ex511" readonly></textarea>
+			<textarea id="ex512" readonly></textarea>
+			<textarea id="ex513" readonly></textarea>
+			<textarea id="ex514" readonly></textarea>
+			<textarea id="ex515" readonly></textarea>
+		</div>
+		<div>
+			<textarea id="ex50" readonly></textarea>
+			<textarea id="ex51" readonly></textarea>
+			<textarea id="ex52" readonly></textarea>
+			<textarea id="ex53" readonly></textarea>
+			<textarea id="ex54" readonly></textarea>
+			<textarea id="ex55" readonly></textarea>
+			<textarea id="ex56" readonly></textarea>
+			<textarea id="ex57" readonly></textarea>
+		</div>
+		<div style="margin:auto;font-size:0.8em;line-height:1.5rem;"><p><b>Крок 1.</b> Абонент А генерує випадкову бітову послідовність, яку поляризує випадковою послідовністю базисів</p></div>	
+	</div>
+	<div id="9page1" hidden>
+		<div>
+			<textarea id="ex516" readonly></textarea>
+			<textarea id="ex517" readonly></textarea>
+			<textarea id="ex518" readonly></textarea>
+			<textarea id="ex519" readonly></textarea>
+			<textarea id="ex520" readonly></textarea>
+			<textarea id="ex521" readonly></textarea>
+			<textarea id="ex522" readonly></textarea>
+			<textarea id="ex523" readonly></textarea>
+		</div>
+		<div style="margin:auto;font-size:0.8em;line-height:1.5rem;"><p><b>Крок 2.</b> Абонент А анонсує класичними каналами зв'язку послідовність індексів, якою розкодовується бітовий вектор</p></div>
+	</div>
+	<div id="9page2" hidden>
+		<div>
+			<textarea id="ex524" readonly></textarea>
+			<textarea id="ex525" readonly></textarea>
+			<textarea id="ex526" readonly></textarea>
+			<textarea id="ex527" readonly></textarea>
+			<textarea id="ex528" readonly></textarea>
+			<textarea id="ex529" readonly></textarea>
+			<textarea id="ex530" readonly></textarea>
+			<textarea id="ex531" readonly></textarea>
+		</div>
+		<div style="margin:auto;font-size:0.8em;line-height:1.5rem;"><p><b>Крок 3.</b> Абонент B генерує випадкову послідовність базисів, через які пропускає отриману послідовність поляризованих фотонів</p></div>
+	</div>
+	<div id="9page3" hidden>
+		<div>
+			<textarea id="ex532" readonly></textarea>
+			<textarea id="ex533" readonly></textarea>
+			<textarea id="ex534" readonly></textarea>
+			<textarea id="ex535" readonly></textarea>
+			<textarea id="ex536" readonly></textarea>
+			<textarea id="ex537" readonly></textarea>
+			<textarea id="ex538" readonly></textarea>
+			<textarea id="ex539" readonly></textarea>
+		</div>
+		<div style="margin:auto;font-size:0.8em;line-height:1.5rem;"><p><b>Крок 4.</b> Абонент B декодує отриману послідовність поляризованих фотонів у відповідності до анонсованих індексів і формує секретний ключ, при цьому відкидаючи ITER-помилки("е")</p></div>
+	</div>
+<p><button id="next7" onclick="next7();">Далі</button></p>
+</div>
+<div id="11" style="display: none;">
+	<div>
+	<h2>Практичне завдання №5</h2>
+		<div>
+			<p class="text">У відповідності до зчитаних значень фотонів та набору неортогональних базисів декодуйте біти для формування секретного ключа для протоколу SARG-04 довжиною 16 біт:</p>
+			<p class="text"><br/><b>Підказка: </b>порівняйте чи є значення поляризації фотона ортогональним (перпендикулярним) з одним з набору базисів. Якщо так, то візьміть інше (неортогональне) значення в наборі і занесіть значення його біта (0 або 1) в ключ</p>
+		</div>
+		<div id="pract51" style="display:flex;">
+		     <div style="flex-basis:100%;padding-top:2vh;">
+		        <div>
+					<textarea id="ex40" readonly></textarea>
+					<textarea id="ex41" readonly></textarea>
+					<textarea id="ex42" readonly></textarea>
+					<textarea id="ex43" readonly></textarea>
+					<textarea id="ex44" readonly></textarea>
+					<textarea id="ex45" readonly></textarea>
+					<textarea id="ex46" readonly></textarea>
+					<textarea id="ex47" readonly></textarea>
+				</div>
+		    </div>
+		</div>
+		<div id="pract52" style="display:flex;">
+		     <div style="flex-basis:100%;padding-top:2vh;">
+		        <div>
+					<textarea id="ex48"></textarea>
+					<textarea id="ex49"></textarea>
+					<textarea id="ex410" ></textarea>
+					<textarea id="ex411" ></textarea>
+					<textarea id="ex412" ></textarea>
+					<textarea id="ex413" ></textarea>
+					<textarea id="ex414" ></textarea>
+					<textarea id="ex415" ></textarea>
+					<div style="font-size:0.8em;line-height:0.9em;">
+						<p><button id="next8" onclick="">Далі</button></p>
+					</div>
+				</div>
+		    </div>
+
+		</div>
+		<div id="fourw" hidden>Практичне завдання №5 завершене <b style="color:green;">&#10003;</b></div>
+	</div>
+<script>
+</script>
+</div>
+</div>
+<script>
+$(document).ready(function(){
+for(i=0;i<8;i++)
+{
+	$("#ex5"+i).css("max-width","35px");
+	$("#ex5"+(8+i)).css("max-width","35px");
+	switch(Math.trunc(Math.random()*4)){
+		case 0:$("#ex5"+i).val("e1");break;
+		case 1:$("#ex5"+i).val("e2");break;
+		case 2:$("#ex5"+i).val("f1");break;
+		case 3:$("#ex5"+i).val("f2");break;
+	}
+	if (Math.trunc(Math.random()*2)){$("#ex5"+(8+i)).val("1");}else{$("#ex5"+(8+i)).val("0");}
+	if (Math.trunc(Math.random()*2)){$("#ex5"+(16+i)).val("1");}else{$("#ex5"+(16+i)).val("2");}
+	switch(Math.trunc(Math.random()*4)){
+		case 0:$("#ex5"+(24+i)).val("e1");break;
+		case 1:$("#ex5"+(24+i)).val("e2");break;
+		case 2:$("#ex5"+(24+i)).val("f1");break;
+		case 3:$("#ex5"+(24+i)).val("f2");break;
+	}
+	switch($("#ex5"+(24+i)).val()){
+		case "e1":if($("#ex5"+(16+i)).val()=="1"){$("#ex5"+(32+i)).val("x")}else{$("#ex5"+(32+i)).val("1")};break;
+		case "e2":if($("#ex5"+(16+i)).val()=="1"){$("#ex5"+(32+i)).val("1")}else{$("#ex5"+(32+i)).val("x")};break;
+		case "f1":if($("#ex5"+(16+i)).val()=="1"){$("#ex5"+(32+i)).val("x")}else{$("#ex5"+(32+i)).val("0")};break;
+		case "f2":if($("#ex5"+(16+i)).val()=="1"){$("#ex5"+(32+i)).val("0")}else{$("#ex5"+(32+i)).val("x")};break;
+	}
+	if (($("#ex5"+(32+i)).val()!=$("#ex5"+(8+i)).val())&&($("#ex5"+(32+i)).val()!="x")){$("#ex5"+(32+i)).val("e");}
+}
+});
+var n9=0;
+function next7(){
+$(document).ready(function(){
+switch(n9){
+case 0:$('#9page').show(1000);break;
+case 1:$('#9page1').show(1000);break;
+case 2:$('#9page2').show(1000);break;
+case 3:$('#9page3').show(1000);$('#add').show(1000);$('#next7').hide(1000);break;
+}
+n9++;
+});
+}
+</script>
 </div>
 <p align="center"><button id="sub" onclick="sub()">Попередня</button><button id="add" onclick="add()">Наступна</button></p>
 <script>
