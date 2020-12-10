@@ -54,13 +54,19 @@ button{width:auto;border:1px solid #DADCDE;font-family:Raleway;font-size:20px;pa
 body{background-color: #DADCDE;}
 .table3{display:flex;width:100%;text-align:center;line-height:1.5em;}
 .table3 > div{border:1px solid black;font-size:2vw;height:5vw;justify-content: center;}
-
 </style>
 </head>
-<body>
+<body >
 <div id="main" class="flex-container">
+<div id="0" style="display:flex;height:100%;">
+	<div style="margin:auto;">
+		<div>Онлайн-урок з вивчення пртоколів квантової криптографії</div>
+		<p style="padding:0 20% 0 20%;font-size:0.8em;line-height:1em;">В даному уроці описані алгоритми роботи основних протоколів квантової криптографії з генерації спільного секретного ключа.</p>
+		<button onclick="start()">Почати</button>
+	</div>
+</div>
 
-  <div id="1"><div><h2>Вступ</h2></div>
+  <div id="1" hidden><div><h2>Вступ</h2></div>
 	<div><p class="text" id="vstup">Квантовий розподіл ключа - метод передачі ключа, який
 використовує квантові явища для гарантії безпечної зв'язку. Цей метод
 дозволяє двом сторонам, з'єднаним з відкритого каналу зв'язку, створити
@@ -80,10 +86,16 @@ body{background-color: #DADCDE;}
 </p></div>
 	
   </div>
-  <div id="2" style="display: none;">
+<div id="2" style="display: none;">
 	<div><h2>Алгоритм BB84</h2></div>
 <script>
-
+function start(){
+	$(document).ready(function(){
+		$("#0").hide();
+		$("#1").show(1000);
+		$("#add").show(1000);
+	});
+}
 window.addEventListener('load', (event) => {
 anime({
 targets: ['.square1'],
@@ -252,7 +264,7 @@ case 3:$(document).ready(function(){$('#b3').show(1000);
 </script>	
   
   </div>
-  <div id="3" style="display: none;">
+<div id="3" style="display: none;">
 	<div>
 		<h2>Практичне завдання №1</h2>
 <script>
@@ -386,7 +398,7 @@ case 3:$(document).ready(function(){
 	<div id="pw" hidden>Практичне завдання №1 завершене <b style="color:green;">&#10003;</b></div>
 	</div>
   </div>
-  <div id="4" style="display: none;">
+<div id="4" style="display: none;">
   <div>
 	<h2>Алгоритм B92</h2>
 	<div class="text">
@@ -545,7 +557,7 @@ case 2:$('#te').show(1000);$('#but2').hide(1000);$("#add").show(1000);break;
 	</div>
 	
   </div>
-  <div id="5" style="display: none;">
+<div id="5" style="display: none;">
   <div>
 	<h2>Практичне завдання №2</h2>
 	<p class="text">Виконайте генрацію спільного секретного ключа довжиною 32 біти у відповідності до протоколу B92 у якості Абонента В за допомогою послідовності вхідних поляризованих фотонів та власної послідовності базисів. 
@@ -575,7 +587,10 @@ case 2:$('#te').show(1000);$('#but2').hide(1000);$("#add").show(1000);break;
 	</div>
 	<input id="final_pw2"/><br/>
 	<button onclick="continue_pw2()" id="but4">Наступний раунд</button>
-	
+	<div style="font-size:0.8em;line-height:0.9em;">
+		<label for="progress2">Ключ: </label>
+		<progress id="progress2" value="0" max="16"></progress>
+		</div>
 	</div>
 	<button  onclick="start_pw2()" id="but3">Розпочати</button>
 	<div id="secondwork" hidden><div>Практичне завдання №2 завершене <b style="color:green;">&#10003;</b></div></div>
@@ -620,11 +635,12 @@ $(document).ready(function(){
 	if(final_pw2==$('#final_pw2').val()){pw2final+=final_pw2;start_pw2();}else{fault++;}
 	if(pw2final.length==16||pw2final.length>16){$('#2pw').hide(1000);$('#secondwork').show(1000);$("#add").show(1000);res=res+25-fault;}
 	$('#final_pw2').val('');
+	$('#progress2').attr("value",pw2final.length);
 	});
 }
   </script>
   </div>
-  <div id="6" style="display: none;">
+<div id="6" style="display: none;">
 	<h2>Протокол E91</h2>
   <div><div class="text">Протокол Е91(EPR-Protocol) - квантовий криптографічний протокол, розроблений в 1991-ому році Артуром Еккертом. Протокол заснований на властивостя так званих "заплутаних" станах квантових часток.
   Суть принципу (описаного в "ментальному експерименті" Енштейна-Подольського-Розена) полягає в генерації двох фотонів з однаковим базисом, та протилежною поляризацію, які відправляють незалежним джерелом Абонентам А і В.
@@ -866,7 +882,7 @@ $('#but5').hide();$("#add").show(1000);
   <button id="but5" onclick="next4();">Далі</button>
   </div>  
   </div>  
-  <div id="7" style="display: none;">
+<div id="7" style="display: none;">
 	<div>
 	<h2>Практичне завдання №3</h2>
 	<div style="width:100%;display:flex;">
@@ -994,7 +1010,7 @@ $(document).ready(function(){
 	</script>
 	</div>
   </div>
-  <div id="8" style="display: none;">
+<div id="8" style="display: none;">
 	<div>
 	<h2>Протокол SARG-04</h2>
 	<div><p class="text">Протокол SARG-04 - протокол квантової криптографії, що був розроблений групою криптографів (В.Скарані, А.Асін, Н.Ґісін) у 2004 році на основі протоколів BB84 і B92.</p>
@@ -1197,7 +1213,6 @@ $(document).ready(function(){
 	<button id="but8" onclick="next5();">Далі</button>
 </div>
 </div>
-
 <div id="9" style="display: none;">
 	<div>
 	<h2>Практичне завдання №4</h2>
@@ -1292,7 +1307,7 @@ $(document).ready(function(){
 	<div>
 	<h2>Протокол KMB-09</h2>
 		<div>
-			<p class="text">Протокол KMB09 (названий на честь Мухаммеда Мубашира Хана, Майкла Мерфі та Алмута Бежа) - це альтернативний протокол розподілу квантових ключів, де Абоненти А і В використовують дві взаємно неупереджені бази, одна з яких кодує 0, а інша кодує 1.</p>
+			<p class="text">Протокол KMB09 (названий на честь Мухаммеда Мубашира Хана, Майкла Мерфі та Алмута Бежа) - це альтернативний протокол розподілу квантових ключів, де Абоненти А і В використовують дві взаємно неупереджені бази, одна з яких кодує 0, а інша кодує 1. По суті, поляризуючи</p>
 		</div>
 	</div>
 	<div>
@@ -1389,44 +1404,154 @@ $(document).ready(function(){
 	<div>
 	<h2>Практичне завдання №5</h2>
 		<div>
-			<p class="text">У відповідності до зчитаних значень фотонів та набору неортогональних базисів декодуйте біти для формування секретного ключа для протоколу SARG-04 довжиною 16 біт:</p>
-			<p class="text"><br/><b>Підказка: </b>порівняйте чи є значення поляризації фотона ортогональним (перпендикулярним) з одним з набору базисів. Якщо так, то візьміть інше (неортогональне) значення в наборі і занесіть значення його біта (0 або 1) в ключ</p>
+			<p class="text">Декодуйте отримане повідомлення у відповідності від наведеного набору базисів (Введіть: 0, 1, I(ITER-помилка), x(невдала генерація))</p>
+			<p class="text"><br/><b>Підказка: </b>ITER-помилка виникає внаслідок поляризації фотона невідповідним базисом, наприклад поляризацією біту "1" базисом "е", який має поляризувати значення "0" у відповідності до наведеної нижче таблиці</p>
 		</div>
-		<div id="pract51" style="display:flex;">
-		     <div style="flex-basis:100%;padding-top:2vh;">
-		        <div>
-					<textarea id="ex40" readonly></textarea>
-					<textarea id="ex41" readonly></textarea>
-					<textarea id="ex42" readonly></textarea>
-					<textarea id="ex43" readonly></textarea>
-					<textarea id="ex44" readonly></textarea>
-					<textarea id="ex45" readonly></textarea>
-					<textarea id="ex46" readonly></textarea>
-					<textarea id="ex47" readonly></textarea>
-				</div>
-		    </div>
+		<div>
+			<table style="width:70%;margin-top:2%;" align="center" border="1">
+			<tr>
+				<td> </td>
+				<td>f1</td>
+				<td>f2</td>
+				<td>f3</td>
+				<td>e1</td>
+				<td>e2</td>
+				<td>e3</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>x</td>
+				<td>x</td>
+				<td>1</td>
+				<td>x</td>
+				<td>0</td>
+				<td>x</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>x</td>
+				<td>1</td>
+				<td>x</td>
+				<td>0</td>
+				<td>x</td>
+				<td>x</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>1</td>
+				<td>x</td>
+				<td>x</td>
+				<td>x</td>
+				<td>x</td>
+				<td>0</td>
+			</tr>
+			</table>
+			<div style="margin:auto;margin-top:0;font-size:0.8em;line-height:1em;"><p>Набір проіндексованих неупереджених базисів</p></div>	
 		</div>
-		<div id="pract52" style="display:flex;">
-		     <div style="flex-basis:100%;padding-top:2vh;">
-		        <div>
-					<textarea id="ex48"></textarea>
-					<textarea id="ex49"></textarea>
-					<textarea id="ex410" ></textarea>
-					<textarea id="ex411" ></textarea>
-					<textarea id="ex412" ></textarea>
-					<textarea id="ex413" ></textarea>
-					<textarea id="ex414" ></textarea>
-					<textarea id="ex415" ></textarea>
-					<div style="font-size:0.8em;line-height:0.9em;">
-						<p><button id="next8" onclick="">Далі</button></p>
-					</div>
-				</div>
-		    </div>
-
+		<div id="pract5">
+		<div>
+			<textarea id="ex60" readonly></textarea>
+			<textarea id="ex61" readonly></textarea>
+			<textarea id="ex62" readonly></textarea>
+			<textarea id="ex63" readonly></textarea>
+			<textarea id="ex64" readonly></textarea>
+			<textarea id="ex65" readonly></textarea>
+			<textarea id="ex66" readonly></textarea>
+			<textarea id="ex67" readonly></textarea>
 		</div>
-		<div id="fourw" hidden>Практичне завдання №5 завершене <b style="color:green;">&#10003;</b></div>
+		<div style="margin:auto;margin-top:0;font-size:0.8em;line-height:1em;"><p>Отримана послідовність фотонів від Абонента В</p></div>
+		<div>
+			<textarea id="ex68" readonly></textarea>
+			<textarea id="ex69" readonly></textarea>
+			<textarea id="ex610" readonly></textarea>
+			<textarea id="ex611" readonly></textarea>
+			<textarea id="ex612" readonly></textarea>
+			<textarea id="ex613" readonly></textarea>
+			<textarea id="ex614" readonly></textarea>
+			<textarea id="ex615" readonly></textarea>
+		</div>
+		<div style="margin:auto;margin-top:0;font-size:0.8em;line-height:1em;"><p>Анонсована Абонентом А послідовність індексів базисів поляризації</p></div>
+		<div>
+			<textarea id="ex616" readonly></textarea>
+			<textarea id="ex617" readonly></textarea>
+			<textarea id="ex618" readonly></textarea>
+			<textarea id="ex619" readonly></textarea>
+			<textarea id="ex620" readonly></textarea>
+			<textarea id="ex621" readonly></textarea>
+			<textarea id="ex622" readonly></textarea>
+			<textarea id="ex623" readonly></textarea>
+		</div>
+		<div style="margin:auto;margin-top:0;font-size:0.8em;line-height:1em;"><p>Вектор поляризацій Абонента В</p></div>
+		<div>
+			<textarea id="ex624"></textarea>
+			<textarea id="ex625"></textarea>
+			<textarea id="ex626"></textarea>
+			<textarea id="ex627"></textarea>
+			<textarea id="ex628"></textarea>
+			<textarea id="ex629"></textarea>
+			<textarea id="ex630"></textarea>
+			<textarea id="ex631"></textarea>
+		</div>
+		<div style="font-size:0.8em;line-height:0.9em;">
+			<label for="progress5">Ключ: </label>
+			<progress id="progress5" value="0" max="16"></progress>
+			<p><button id="next8" onclick="pract5resultfunc();">Далі</button></p>
+		</div>
+		</div>
+		<div id="fivew" hidden>Практичне завдання №5 завершене <b style="color:green;">&#10003;</b></div>
 	</div>
 <script>
+var practresult5="";
+var result5=0;
+function pract5func(){
+$(document).ready(function(){
+for(i=0;i<8;i++)
+{
+	switch (Math.trunc(Math.random()*6)){
+	case 0:$("#ex6"+i).val("e1");break;
+	case 1:$("#ex6"+i).val("e2");break;
+	case 2:$("#ex6"+i).val("e3");break;
+	case 3:$("#ex6"+i).val("f1");break;
+	case 4:$("#ex6"+i).val("f2");break;
+	case 5:$("#ex6"+i).val("f3");break;
+	}
+	switch (Math.trunc(Math.random()*3)){
+	case 0:$("#ex6"+(8+i)).val("1");break;
+	case 1:$("#ex6"+(8+i)).val("2");break;
+	case 2:$("#ex6"+(8+i)).val("3");break;
+	}	
+	switch (Math.trunc(Math.random()*6)){
+	case 0:$("#ex6"+(16+i)).val("e1");break;
+	case 1:$("#ex6"+(16+i)).val("e2");break;
+	case 2:$("#ex6"+(16+i)).val("e3");break;
+	case 3:$("#ex6"+(16+i)).val("f1");break;
+	case 4:$("#ex6"+(16+i)).val("f2");break;
+	case 5:$("#ex6"+(16+i)).val("f3");break;
+	}
+}
+});
+}
+function pract5resultfunc(){
+for(i=0;i<8;i++)
+{
+	switch ($("#ex6"+(16+i)).val()){
+	case "e1":if ($("#ex6"+(8+i)).val()==2){practresult5+="0"}else{if (($("#ex6"+i).val()[0]="e")&&($("#ex6"+(i+24)).val()=="1")){practresult5+="I"}else{practresult5+="x"}};break;
+	case "e2":if ($("#ex6"+(8+i)).val()==1){practresult5+="0"}else{if (($("#ex6"+i).val()[0]="e")&&($("#ex6"+(i+24)).val()=="1")){practresult5+="I"}else{practresult5+="x"}};break;
+	case "e3":if ($("#ex6"+(8+i)).val()==3){practresult5+="0"}else{if (($("#ex6"+i).val()[0]="e")&&($("#ex6"+(i+24)).val()=="1")){practresult5+="I"}else{practresult5+="x"}};break;
+	case "f1":if ($("#ex6"+(8+i)).val()==3){practresult5+="1"}else{if (($("#ex6"+i).val()[0]="f")&&($("#ex6"+(i+24)).val()=="0")){practresult5+="I"}else{practresult5+="x"}};break;
+	case "f2":if ($("#ex6"+(8+i)).val()==2){practresult5+="1"}else{if (($("#ex6"+i).val()[0]="f")&&($("#ex6"+(i+24)).val()=="0")){practresult5+="I"}else{practresult5+="x"}};break;
+	case "f3":if ($("#ex6"+(8+i)).val()==1){practresult5+="1"}else{if (($("#ex6"+i).val()[0]="f")&&($("#ex6"+(i+24)).val()=="0")){practresult5+="I"}else{practresult5+="x"}};break;
+	}
+	if ((practresult5[i]==1||practresult5[i]==0)&&practresult5[i]==$("#ex6"+(24+i)).val()){result5++;}
+	$("#ex6"+(24+i)).val("");
+}
+$("#progress5").attr("value",result5);
+if (result5==16||result5>16){$("#next8").hide(1000);$("#fivew").show(1000);$("#add").show(1000);$("#pract5").hide(1000);}
+alert(practresult5);
+pract5func();
+practresult5="";
+}
+pract5func();
 </script>
 </div>
 </div>
@@ -1436,13 +1561,12 @@ for(i=0;i<8;i++)
 {
 	$("#ex5"+i).css("max-width","35px");
 	$("#ex5"+(8+i)).css("max-width","35px");
-	switch(Math.trunc(Math.random()*4)){
-		case 0:$("#ex5"+i).val("e1");break;
-		case 1:$("#ex5"+i).val("e2");break;
-		case 2:$("#ex5"+i).val("f1");break;
-		case 3:$("#ex5"+i).val("f2");break;
-	}
 	if (Math.trunc(Math.random()*2)){$("#ex5"+(8+i)).val("1");}else{$("#ex5"+(8+i)).val("0");}
+	switch($("#ex5"+(8+i)).val()){
+		case "0":if(Math.trunc(Math.random()*2)){$("#ex5"+i).val("f1");}else{$("#ex5"+i).val("f2");};break;
+		case "1":if(Math.trunc(Math.random()*2)){$("#ex5"+i).val("e1");}else{$("#ex5"+i).val("e2");};break;
+	}
+	
 	if (Math.trunc(Math.random()*2)){$("#ex5"+(16+i)).val("1");}else{$("#ex5"+(16+i)).val("2");}
 	switch(Math.trunc(Math.random()*4)){
 		case 0:$("#ex5"+(24+i)).val("e1");break;
@@ -1473,7 +1597,7 @@ n9++;
 }
 </script>
 </div>
-<p align="center"><button id="sub" onclick="sub()">Попередня</button><button id="add" onclick="add()">Наступна</button></p>
+<p align="center"><button id="sub" onclick="sub()" hidden>Попередня</button><button id="add" onclick="add()" hidden>Наступна</button></p>
 <script>
 function texting(){
 $(document).ready(function(){$('#t1').show(2000);});
@@ -1489,7 +1613,7 @@ if (f!=1){
 }
 function add(){
 $(document).ready(function(){
-if (f!=10){
+if (f!=12){
   $("#"+f).css("display","none");
   $("#"+(f+1)).css("display","block");
   $("#add").hide();
