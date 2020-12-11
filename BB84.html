@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://animejs.com/lib/anime.min.js"></script>
+<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #DADCDE;
+  margin-bottom:2%;
+  margin-left:0;margin-top:0;margin-bottom:1%;
+  height:87vh;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+  flex-basis:100%;
+  overflow:auto;
+}
+.bb84write{
+	margin:3%;
+	display: flex;
+    flex-wrap: wrap;
+}
+.bb84write > div{
+
+  width:350px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:3%;
+  font-size:0.65em;
+  line-height:1.2em;
+}
+.text{
+font-size:0.7em;
+line-height: 1.2em;
+text-align:left;
+padding-left:7%;
+padding-right:7%;
+margin:0;
+}
+body{margin:0;font-family:Raleway;}
+h2{margin-bottom:0;}
+textarea{max-width:5%;text-align:center;min-width:5%;max-height:35px;min-height:30px;font-size:0.8em;flex-basis:4%;resize: none;}
+button{width:auto;border:1px solid #DADCDE;font-family:Raleway;font-size:20px;padding:5px;}
+body{background-color: #DADCDE;}
+.table3{display:flex;width:100%;text-align:center;line-height:1.5em;}
+.table3 > div{border:1px solid black;font-size:2vw;height:5vw;justify-content: center;}
+</style>
+</head>
+<body>
+<div id="main" class="flex-container">
+<div id="3">
+	<div>
+		<h2>Практичне завдання №1</h2>
+<script>
+window.addEventListener('load', (event) => {
+$(document).ready(function(){$("textarea").attr("maxlength",1);});
+$(document).ready(function(){
+  for(z=0;z<8;z++){
+  	var rand=Math.round(Math.random());
+	$('#pw0'+z).append(rand);
+	$('#pw0'+z).prop('readonly',true);
+	var rand1=Math.round(Math.random());
+	if (rand1==0){$('#pw'+z).append('+');}else{$('#pw'+z).append('x');}
+	$('#pw'+z).prop('readonly',true);
+	}
+});
+});
+var j1=1;
+var z=0;
+var res=0;
+function next2(){
+switch(j1){
+case 1:
+$(document).ready(function(){
+
+	for(z=0;z<8;z++){
+		var a = $('#pw0'+z).val();
+		var b = $('#pw'+z).val();
+		var c = $('#pw0'+(8+z)).val();
+		switch(b){
+			case '+':if((a==1&&c=='-')||(a==0&&c=='|')){res++;$('#pw0'+(8+z)).css('background-color','#70FF55');}else{$('#pw0'+(8+z)).css('background-color','#FF3433');$('#pw0'+(8+z)).prop('disabled',true);$('#pw0'+(24+z)).prop('disabled',true);$('#pw0'+(24+z)).val('');}break;
+			case 'x':if((a==1&&c=='\\')||(a==0&&c=='/')){res++;$('#pw0'+(8+z)).css('background-color','#70FF55');}else{$('#pw0'+(8+z)).css('background-color','#FF3434');$('#pw0'+(8+z)).prop('disabled',true);$('#pw0'+(24+z)).prop('disabled',true);$('#pw0'+(24+z)).val('');}break;
+		}
+		
+		if (Math.round(Math.random())){var rand2='+';}else{var rand2='x';};
+		$('#pw0'+(16+z)).append(rand2);
+		$('#pw0'+(16+z)).prop('disabled',true);
+	}
+	$('#n3').show(1000);
+});j1++;break;
+case 2:$(document).ready(function(){
+			for(z=0;z<8;z++){
+			let a1=$('#pw0'+(8+z)).val();
+			let b1=$('#pw0'+(16+z)).val();
+			let c1=$('#pw0'+(24+z)).val();
+			if((analize1(a1,b1)==true&&(c1=='T'||c1=='t'))||(analize1(a1,b1)==false&&(c1=='F'||c1=='f'))){$('#pw0'+(24+z)).css('background-color','#70FF55');$('#pw0'+(24+z)).prop('readonly',true);res++;}else{$('#pw0'+(24+z)).css('background-color','#FF3434');$('#pw0'+(24+z)).prop('disabled',true);}
+			}
+			$('#pwResult').show(1000);
+			j1++;
+		});break;
+case 3:$(document).ready(function(){
+			let d1 = $('#pwFinal').val();
+			let r1="";
+			for(z=0;z<8;z++){
+			if($('#pw0'+(24+z)).val()=='t'||$('#pw0'+(24+z)).val()=='T'){r1+=$('#pw0'+z).val();}
+			}
+			if(r1==$('#pwFinal').val()){res+=8;document.cookie="first-task="+res;}
+			$('#but1').hide(1000);
+			$('#pw').show(1000);$("#add").show(1000);});break;
+}
+}
+function analize(a,b){
+switch (a){
+case 0:{if (b=='X'||b=='x'){return '/';}else{return '|';}}
+case 1:{if (b=='+'){return '\\';}else{return '-';}}
+}
+};
+function analize1(a,b){
+switch (a){
+case '\\':{if (b=='X'||b=='x'){return true;}else{return false;}}
+case '/':{if (b=='X'||b=='x'){return true;}else{return false;}}
+case '-':{if (b=='+'){return true;}else{return false;}}
+case '|':{if (b=='+'){return true;}else{return false;}}
+}
+};
+function analize2(a){
+switch (a){
+case 0:if (Math.round(Math.random())){return '|';}else{return '/';}
+case 1:if (Math.round(Math.random())){return '-';}else{return '\\';}
+}
+};
+</script>	
+	<div style="display:flex;">
+	<div style="flex-basis:50%;">
+	<div>
+	<textarea id="pw00"></textarea>
+	<textarea id="pw01"></textarea>
+	<textarea id="pw02"></textarea>
+	<textarea id="pw03"></textarea>
+	<textarea id="pw04"></textarea>
+	<textarea id="pw05"></textarea>
+	<textarea id="pw06"></textarea>
+	<textarea id="pw07"></textarea>
+	</div>
+	<div>
+	<textarea id="pw0"></textarea>
+	<textarea id="pw1"></textarea>
+	<textarea id="pw2"></textarea>
+	<textarea id="pw3"></textarea>
+	<textarea id="pw4"></textarea>
+	<textarea id="pw5"></textarea>
+	<textarea id="pw6"></textarea>
+	<textarea id="pw7"></textarea>
+	</div>
+	</div>
+	<div style="flex-basis:50%;font-size:0.75em;line-height:1.5em;padding-right:10%;"><p>Закодуйте біти у відповідності до обраного програмою базисом:<br/><b>х -> { 0 : "/" , 1 : "\" },<br/>+ -> { 0: "|" , 1 : "-" }</b></p></div>
+	</div>
+	<div>
+	<textarea id="pw08"></textarea>
+	<textarea id="pw09"></textarea>
+	<textarea id="pw010"></textarea>
+	<textarea id="pw011"></textarea>
+	<textarea id="pw012"></textarea>
+	<textarea id="pw013"></textarea>
+	<textarea id="pw014"></textarea>
+	<textarea id="pw015"></textarea>
+	</div>
+	
+	<div id="n3" hidden>
+	<div style="display:flex;">
+	<div style="flex-basis:50%;">
+	<div>
+	<textarea id="pw016"></textarea>
+	<textarea id="pw017"></textarea>
+	<textarea id="pw018"></textarea>
+	<textarea id="pw019"></textarea>
+	<textarea id="pw020"></textarea>
+	<textarea id="pw021"></textarea>
+	<textarea id="pw022"></textarea>
+	<textarea id="pw023"></textarea>
+	</div>
+
+	</div>
+	<div style="flex-basis:50%;font-size:0.55em;line-height:1.5em;padding-right:10%;"><p>У відповідності до поляризації сигналів та випадково згенерованої послідовності аналізаторів визначте чи пройдуть сигнали крізь аналізатори. Введіть в поля значення T(True) або F(False)</p></div>
+	</div>
+	<div>
+	<textarea id="pw024"></textarea>
+	<textarea id="pw025"></textarea>
+	<textarea id="pw026"></textarea>
+	<textarea id="pw027"></textarea>
+	<textarea id="pw028"></textarea>
+	<textarea id="pw029"></textarea>
+	<textarea id="pw030"></textarea>
+	<textarea id="pw031"></textarea>
+	</div>
+	</div>
+	<div id="pwResult" hidden>
+	<input id="pwFinal" style="height:1.2em;font-size:1em;text-align:center;font-family:Raleway;" maxlength="8" required autofocus />
+	<p style="margin-top:0;font-size:0.75em;line-height:1.5em;padding-right:10%;padding-left:10%;">Розкодуйте сигнали (у відповідності до наявних базисів), що пройшли аналізатори.<br/>Введіть спільний секретний ключ, що у вас вийшов</p>
+	</div>
+	<button id="but1" onclick="next2();">Далі</button>
+	<div id="pw" hidden>Практичне завдання №1 завершене <b style="color:green;">&#10003;</b></div>
+	</div>
+  </div>
+ </div>
+ </body>
+ </html>
