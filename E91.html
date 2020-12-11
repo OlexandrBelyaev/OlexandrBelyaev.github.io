@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://animejs.com/lib/anime.min.js"></script>
+<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<title>Практична реалізація протоколу BB84</title>
+<style>
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #DADCDE;
+  margin-bottom:2%;
+  margin-left:0;margin-top:0;margin-bottom:1%;
+  height:87vh;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+  flex-basis:100%;
+  overflow:auto;
+}
+.bb84write{
+	margin:3%;
+	display: flex;
+    flex-wrap: wrap;
+}
+.bb84write > div{
+
+  width:350px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:3%;
+  font-size:0.65em;
+  line-height:1.2em;
+}
+.text{
+font-size:0.7em;
+line-height: 1.2em;
+text-align:left;
+padding-left:7%;
+padding-right:7%;
+margin:0;
+}
+body{margin:0;font-family:Raleway;}
+h2{margin-bottom:0;}
+textarea{max-width:5%;text-align:center;min-width:5%;max-height:35px;min-height:30px;font-size:0.8em;flex-basis:4%;resize: none;}
+button{width:auto;border:1px solid #DADCDE;font-family:Raleway;font-size:20px;padding:5px;}
+body{background-color: #DADCDE;}
+.table3{display:flex;width:100%;text-align:center;line-height:1.5em;}
+.table3 > div{border:1px solid black;font-size:2vw;height:5vw;justify-content: center;}
+</style>
+</head>
+<body>
+<div id="main" class="flex-container">
+<div id="7">
+	<div>
+	<h2>Практична реалізація протоколу E91</h2>
+	<div style="width:100%;display:flex;">
+	<div style="padding:1.5%;padding-top:0;flex-basis:50%;width:100%;self-align:center;margin: 0 auto; text-align: center;">
+		<canvas id="canvas"></canvas>
+	</div>
+	<div class="text" style="flex-basis:50%;">Неприємною особливістю протоколу Еккерта є вкрай низька "швідкість" генерації ключа. Так, імовірність успішної генерації біту ключа за даним протоколом складає близько 16-18%<br/><br/>На графіку зображено імовірності генерації різних кількостей бітів за один раунд в протоколах BB84 і E91</div>
+	
+	</div>
+	<div style="width:100%;display:flex;">
+		<div class="text" style="flex-basis:50%;"><strong>Завдання: </strong>враховуючи, що імовірність співпадіння поляризації отриманого сигналу і згенерованого абонентом базису складає 1/3; імовірність співпадення згенерованих абонентами базисів становить 1/3, а довжина повідомлення <a class="pract3length"></a> бітів: <b class="pract3chance">вирахувати імовірність генерації ключа довжиною</b></div>
+		<div class="text" style="flex-basis:50%;">Для цього використайте формулу:<br/><strong>P(A<sub>n1</sub>)=P(A)<sup>n1</sup> x P(B)<sup>n-n1</sup></strong>
+		, де 
+		<ul>
+		<li>P(A<sub>n1</sub>) - імовірність успішної генерації ключа довжиною n1 бітів</li>
+		<li>P(A) - імовірність успішної генерації одного біту ключа</li>
+		<li>P(B) - імовірність невдалої генерації одного біту ключа</li>
+		<li>n - довжина повідомлення</li>
+		<li>n1 - необхідна довжина ключа</li>
+		</ul>
+		</div>
+	</div>
+	<div style="width:100%;display:block;justify-content: center;" id="result3">
+		<div class="text" style="text-align:center;display:block;"><div>Помножте результат на 10<sup>6</sup> та введіть цілу частину у відповідь</div>
+		<div style="width:100%;display:flex;justify-content:center;padding:1% 0 0 0;"><input id="pract3answer" style="width:20vw;height:30px;text-align:center;"/></div>
+		</div>
+		<button onclick="pract3resultfunc();">Результат</button>
+	</div>
+	<script>
+	function pract3resultfunc(){
+	$(document).ready(function(){
+		if (pract3result==$("#pract3answer").val()){
+		alert(true);
+		$("#result3").hide(1000);
+		}
+	});
+	}
+		var MONTHS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
+		var config = {
+			type: 'line',
+			data: {
+				labels: ['0', '1', '2', '3', '4', '5', '6', '7'],
+				datasets: [{
+					label: 'E91',
+					backgroundColor: window.chartColors.red,
+					borderColor: window.chartColors.red,
+					data: [
+						Math.pow(0.84,8),
+						Math.pow(0.84,7)*0.16*8,
+						Math.pow(0.84,6)*Math.pow(0.16,2)*8,
+						Math.pow(0.84,5)*Math.pow(0.16,3)*8,
+						Math.pow(0.84,4)*Math.pow(0.16,4)*8,
+						Math.pow(0.84,3)*Math.pow(0.16,5)*8,
+						Math.pow(0.84,2)*Math.pow(0.16,6)*8,
+						0.84*Math.pow(0.16,7)*8
+					],
+					fill: false,
+				}, {
+					label: 'BB84',
+					fill: false,
+					backgroundColor: window.chartColors.blue,
+					borderColor: window.chartColors.blue,
+					data: [
+						Math.pow(0.5,8),
+						Math.pow(0.5,1),
+						Math.pow(0.5,2),
+						Math.pow(0.5,3),
+						Math.pow(0.5,4),
+						Math.pow(0.5,5),
+						Math.pow(0.5,6),
+						Math.pow(0.5,7)
+					],
+				}]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Імовірність',
+					position: 'bottom'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'average',
+					intersect: true
+				},
+				legend: {
+				position:'bottom'
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Біти'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: '%'
+						}
+					}]
+				}
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+		};
+var prakt3length=Math.trunc(8+Math.random()*16);
+var pract3chance=Math.trunc(1+Math.random()*8);
+var pract3result=Math.trunc(Math.pow(1/9,pract3chance)*Math.pow(8/9,prakt3length-pract3chance)*1000000);
+
+$(document).ready(function(){
+	$('.pract3length').append(prakt3length);
+	$('.pract3chance').append(" "+pract3chance+" бітів");
+});
+
+	</script>
+	</div>
+  </div>
+  </div>
+  </body>
+</html>
