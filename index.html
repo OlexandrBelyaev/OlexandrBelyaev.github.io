@@ -15,6 +15,7 @@
   margin-bottom:2%;
   margin-left:0;margin-top:0;margin-bottom:1%;
   height:87vh;
+  
 }
 
 .flex-container > div {
@@ -57,7 +58,7 @@ body{background-color: #DADCDE;}
 .table3 > div{border:1px solid black;font-size:2vw;height:5vw;justify-content: center;}
 </style>
 </head>
-<body >
+<body>
 <div id="main" class="flex-container">
 <div id="0" style="display:flex;height:100%;">
 	<div style="margin:auto;">
@@ -65,8 +66,8 @@ body{background-color: #DADCDE;}
 		<p style="padding:0 20% 0 20%;font-size:0.8em;line-height:1em;">Симуляції практичних реалізацій протоколів</p>
 		<div style="display:flex;width:100%;justify-content:center;">
 			<div style="flex-basis:15%;background-color:lightblue;margin:5px;" onclick="window.location='https://olexandrbelyaev.github.io/BB84.html'">BB84</div>
-			<div style="flex-basis:15%;background-color:lightblue;margin:5px;" onclick="window.location='https://olexandrbelyaev.github.io/B92.html'">B92</div>
 			<div style="flex-basis:15%;background-color:lightblue;margin:5px;" onclick="window.location='https://olexandrbelyaev.github.io/E91.html'">E91</div>
+			<div style="flex-basis:15%;background-color:lightblue;margin:5px;" onclick="window.location='https://olexandrbelyaev.github.io/B92.html'">B92</div>
 			<div style="flex-basis:15%;background-color:lightblue;margin:5px;" onclick="window.location='https://olexandrbelyaev.github.io/SARG-04.html'">SARG-04</div>
 			<div style="flex-basis:15%;background-color:lightblue;margin:5px;" onclick="window.location='https://olexandrbelyaev.github.io/KMB-09.html'">KMB-09</div>
 		</div>
@@ -594,11 +595,12 @@ case 2:$('#te').show(1000);$('#but2').hide(1000);$("#add").show(1000);break;
 	<textarea id="2pw07" readonly></textarea>
 	</div>
 	<input id="final_pw2"/><br/>
-	<button onclick="continue_pw2()" id="but4">Наступний раунд</button>
 	<div style="font-size:0.8em;line-height:0.9em;">
 		<label for="progress2">Ключ: </label>
 		<progress id="progress2" value="0" max="16"></progress>
-		</div>
+	</div>
+	<button onclick="continue_pw2()" id="but4">Наступний раунд</button>
+	
 	</div>
 	<button  onclick="start_pw2()" id="but3">Розпочати</button>
 	<div id="secondwork" hidden><div>Практичне завдання №2 завершене <b style="color:green;">&#10003;</b></div></div>
