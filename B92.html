@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://animejs.com/lib/anime.min.js"></script>
+<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<title>Практична реалізація протоколу BB84</title>
+<style>
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #DADCDE;
+  margin-bottom:2%;
+  margin-left:0;margin-top:0;margin-bottom:1%;
+  height:87vh;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+  flex-basis:100%;
+  overflow:auto;
+}
+.bb84write{
+	margin:3%;
+	display: flex;
+    flex-wrap: wrap;
+}
+.bb84write > div{
+
+  width:350px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:3%;
+  font-size:0.65em;
+  line-height:1.2em;
+}
+.text{
+font-size:0.7em;
+line-height: 1.2em;
+text-align:left;
+padding-left:7%;
+padding-right:7%;
+margin:0;
+}
+body{margin:0;font-family:Raleway;}
+h2{margin-bottom:0;}
+textarea{max-width:5%;text-align:center;min-width:5%;max-height:35px;min-height:30px;font-size:0.8em;flex-basis:4%;resize: none;}
+button{width:auto;border:1px solid #DADCDE;font-family:Raleway;font-size:20px;padding:5px;}
+body{background-color: #DADCDE;}
+.table3{display:flex;width:100%;text-align:center;line-height:1.5em;}
+.table3 > div{border:1px solid black;font-size:2vw;height:5vw;justify-content: center;}
+</style>
+</head>
+<body>
+<div id="main" class="flex-container">
+<div id="5" style="">
+  <div>
+	<h2>Практична реалізація протоколу B92</h2>
+	<p class="text">Виконайте генрацію спільного секретного ключа довжиною 32 біти у відповідності до протоколу B92 у якості Абонента В за допомогою послідовності вхідних поляризованих фотонів та власної послідовності базисів. 
+	Генерація відбуватиметься у кілька раундів, доки ключ не буде остаточно доповнений.</p>
+	<p class="text">Кожен раунд у відповідності до протоколу має закінчуватись видаленням одного(останнього) біту.</p>
+	<p class="text"></p>
+	<div id="2pw" style="margin-top:2%;" hidden>
+	<div>
+	<textarea id="2pw0" readonly></textarea>
+	<textarea id="2pw1" readonly></textarea>
+	<textarea id="2pw2" readonly></textarea>
+	<textarea id="2pw3" readonly></textarea>
+	<textarea id="2pw4" readonly></textarea>
+	<textarea id="2pw5" readonly></textarea>
+	<textarea id="2pw6" readonly></textarea>
+	<textarea id="2pw7" readonly></textarea>
+	</div>
+	<div class="2pwclass">
+	<textarea id="2pw00" readonly></textarea>
+	<textarea id="2pw01" readonly></textarea>
+	<textarea id="2pw02" readonly></textarea>
+	<textarea id="2pw03" readonly></textarea>
+	<textarea id="2pw04" readonly></textarea>
+	<textarea id="2pw05" readonly></textarea>
+	<textarea id="2pw06" readonly></textarea>
+	<textarea id="2pw07" readonly></textarea>
+	</div>
+	<input id="final_pw2"/><br/>
+	<div style="font-size:0.8em;line-height:0.9em;">
+		<label for="progress2">Ключ: </label>
+		<progress id="progress2" value="0" max="16"></progress>
+		</div>
+	<button onclick="continue_pw2()" id="but4">Наступний раунд</button>
+	
+	</div>
+	<button  onclick="start_pw2()" id="but3">Розпочати</button>
+	<div id="secondwork" hidden><div>Практичне завдання №2 завершене <b style="color:green;">&#10003;</b></div></div>
+  </div>
+  <script>
+  var pw2final="";
+  var fault=0;
+  function start_pw2(){
+	$(document).ready(function(){
+    if(pw2final==""){$('#2pw').show(1000);}
+	for(i=0;i<8;i++){
+	switch(Math.trunc(Math.random()*4)){
+		case 0:$('#2pw'+i).val('↺');break;
+		case 1:$('#2pw'+i).val('⬌');break;
+		case 2:$('#2pw'+i).val('↻');break;
+		case 3:$('#2pw'+i).val('⬍');break;
+	}
+	if(Math.round(Math.random())==0){$('#2pw0'+i).val('○');}else{$('#2pw0'+i).val('+');}
+	}
+	$('#but3').hide(100);
+	});
+  }
+function continue_pw2(){
+var prom="";
+
+$(document).ready(function(){
+	var result_pw2="";
+	var final_pw2="";
+	for(i=0;i<8;i++){
+		if(($('#2pw'+i).val()=='↻'||$('#2pw'+i).val()=='↺')&&($('#2pw0'+i).val()=='○')){result_pw2+=$('#2pw'+i).val();}
+		if(($('#2pw'+i).val()=='⬌'||$('#2pw'+i).val()=='⬍')&&($('#2pw0'+i).val()=='+')){result_pw2+=$('#2pw'+i).val();}
+		}
+	for(i=0;i<result_pw2.length;i++){
+		switch(result_pw2[i]){
+			case '⬍':final_pw2+='0';break;
+			case '⬌':final_pw2+='1';break;
+			case '↺':final_pw2+='0';break;
+			case '↻':final_pw2+='1';break;
+		}
+	}
+	if (final_pw2.length<2){final_pw2="";}else{for(i=0;i<final_pw2.length-1;i++){prom+=final_pw2[i];}final_pw2=prom;}
+	if(final_pw2==$('#final_pw2').val()){pw2final+=final_pw2;start_pw2();}else{fault++;}
+	if(pw2final.length==16||pw2final.length>16){$('#2pw').hide(1000);$('#secondwork').show(1000);$("#add").show(1000);res=res+25-fault;}
+	$('#final_pw2').val('');
+	$('#progress2').attr("value",pw2final.length);
+	});
+}
+  </script>
+  </div>
+</div>
+</body>
+</html>
