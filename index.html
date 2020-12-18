@@ -911,10 +911,11 @@ $('#but5').hide();$("#add").show(1000);
 		<button onclick="pract3resultfunc();">Результат</button>
 	</div>
 	<script>
+	var pract3=0;
 	function pract3resultfunc(){
 	$(document).ready(function(){
 		if (pract3result==$("#pract3answer").val()){
-		alert(true);
+		pract3++;
 		$("#add").show(1000);
 		}
 	});
@@ -1553,6 +1554,50 @@ practresult5="";
 pract5func();
 </script>
 </div>
+<div id="11" style="display: none;">
+	<div>
+	<h2>Результат</h2>
+		<div>
+			<table style="width:70%;margin-top:2%;" align="center" border="1">
+			<tr>
+				<td>BB84</td>
+				<td id="BB84"></td>
+			</tr>
+			<tr>
+				<td>B92</td>
+				<td id="B92"></td>
+			</tr>
+			<tr>
+				<td>E91</td>
+				<td id="E91"></td>
+			</tr>
+			<tr>
+				<td>SARG-04</td>
+				<td id="SARG-04"></td>
+			</tr>
+			<tr>
+				<td>KMB-09</td>
+				<td id="KMB-09"></td>
+			</tr>
+			</table>
+			<div style="margin:auto;margin-top:0;font-size:0.8em;line-height:1em;"><p>Набір проіндексованих неупереджених базисів</p></div>	
+		</div>
+		
+		<div id="fivew" >Практичне завдання №5 завершене <b style="color:green;">&#10003;</b></div>
+	</div>
+<script>
+res
+$(document).ready(function(){
+$('#BB84').text((res/24)*100);
+$('#B92').text(pw2final);
+$('#E91').text(100/pract3);
+$('#SARG-04').text(practresult4);
+$('#KMB-09').text(result5);
+});
+</script>
+
+</div>
+
 </div>
 <script>
 $(document).ready(function(){
